@@ -63,8 +63,7 @@ public class Ex0_Java {
 		double dNum = 12345.6;
 		int iNum = (int)dNum;
 		System.out.println(iNum);
-		
-		
+		 
 		// Scanner 사용
 		Scanner sc = new Scanner(System.in);
 		
@@ -76,6 +75,10 @@ public class Ex0_Java {
 		System.out.print("나이를 입력하세요: ");
 		int age = sc.nextInt();
 		System.out.println("나이: " + age);		
+		
+		
+		// "\" 키워드 이용하여 특수문자 출력하기
+		System.out.println("\"Hello, world!\"");	
 		
 		
 	}
