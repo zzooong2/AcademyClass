@@ -76,7 +76,9 @@ public class Ex4_Array {
 		
 		// <배열의 명시적 초기화>
 		
+//		int[] arr = new int{7, 4, 11};		
 		int[] arr = {7, 4, 11};
+
 		System.out.println(arr[0]);
 		
 				

@@ -23,6 +23,33 @@ public class Ex4_Array {
 		} 
 		System.out.println("평균 점수: " + avg);
 		
+		System.out.println("----------------------------");
+		
+		
+		// 2-1번 : 5만큼의 길이를 가진 배열을 선언 및 할당하세요.
+		String[] arr = new String[5];
+		
+		// 2-2번 : 위에서 선언 및 할당한 배열에 "A", "B", "CD", "E", "FG" 값으로 초기화 하세요.
+		for(int i=0; i<arr.length; i++) {
+			if(i == 0) {
+				arr[0] = "A";
+			} else if (i == 1) {
+				arr[1] = "B";
+			} else if (i == 2) {
+				arr[2] = "CD";
+			} else if (i == 3) {
+				arr[3] = "E";
+			} else if (i == 4) {
+				arr[4] = "FG";
+			}
+		}
+		
+		for(int j=0; j<arr.length; j++) {
+			System.out.println(arr[j]);
+		}
+		
+		
+		
 	}
 
 }
