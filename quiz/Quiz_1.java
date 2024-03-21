@@ -222,9 +222,9 @@ public class Quiz_1 {
 			arr[i] = sc.nextInt();
 				
 				if(arr[i] % 2 == 0) {
-					cnt += 1;
+					cnt ++;
 				} else if(arr[i] % 2 != 0) {
-					cnt2 += 1;	
+					cnt2 ++;	
 				}
 		}
 		System.out.println("짝수 수량: " + cnt);
