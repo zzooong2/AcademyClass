@@ -144,21 +144,21 @@ public class Quiz_1 {
 		studyScore[2] = mat;
 		studyScore[3] = sci;
 		
-		String[] name = {"국", "영", "수", "과"};
+		String[] subject = {"국", "영", "수", "과"};
 		
 		for(int i=0; i<studyScore.length; i++) {
 			if(studyScore[i] >= 90) {
-				System.out.println(name[i] + "의 성적: A");
+				System.out.println(subject[i] + "의 성적: A");
 			} else if (studyScore[i] >= 80) {
-				System.out.println(name[i] + "의 성적: B");
+				System.out.println(subject[i] + "의 성적: B");
 			} else if (studyScore[i] >= 70) {
-				System.out.println(name[i] + "의 성적: C");
+				System.out.println(subject[i] + "의 성적: C");
 			} else if (studyScore[i] >= 60) {
-				System.out.println(name[i] + "의 성적: D");
+				System.out.println(subject[i] + "의 성적: D");
 			} else if (studyScore[i] >= 50) {
-				System.out.println(name[i] + "의 성적: E");
+				System.out.println(subject[i] + "의 성적: E");
 			} else if (studyScore[i] < 50) {
-				System.out.println(name[i] + "의 성적: F");
+				System.out.println(subject[i] + "의 성적: F");
 			}
 		}
 		
