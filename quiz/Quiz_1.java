@@ -242,6 +242,7 @@ public class Quiz_1 {
 		int[] scores = {85, 90, 78, 92, 88};
 		
 		int sum2 = 0;
+		int avgCnt = 0;
 		int minScore = scores[0];
 		int maxScore = scores[0];
 		
@@ -249,10 +250,10 @@ public class Quiz_1 {
 			sum2 += scores[i];
 		}
 		
-		int avgCnt = sum2 / scores.length ;
+		int avg3 = sum2 / scores.length ;
 		
 		System.out.println("성적 합계: " + sum);
-		System.out.println("성적 평균: " + avg);
+		System.out.println("성적 평균: " + avg3);
 		
 		for(int i=0; i<scores.length; i++) {
 			if(minScore > scores[i]) {
@@ -264,7 +265,7 @@ public class Quiz_1 {
 			}
 			
 			if(scores[i] >= 80) {
-				avgCnt += 1;
+				avgCnt ++;
 			}
 		}
 		System.out.println("가장 높은 성적: " + minScore);
