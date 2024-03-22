@@ -4,13 +4,12 @@ public class Ex5_Method {
 
 	public static void main(String[] args) {
 		
-		// Ex5_1_Car 클래스 생성
+		// 1번.
 		// "자동차 엔진을 시작합니다." 출력
 		// "자동차 엔진을 정지합니다." 출력
 		// "자동차가 가속합니다." 출력
 		// "자동차가 감속합니다." 출력
-		
-		// 객체 생성 후 4개 메소드 호출
+	
 		Ex5_1_Car car = new Ex5_1_Car();
 		
 		car.start();
@@ -18,6 +17,27 @@ public class Ex5_Method {
 		car.go();
 		car.brake();
 		
+		System.out.println("------------------");
+		
+		
+		// 2번.
+		int[] arr = {10, 23, 64, 5, 100};
+		
+		
+		Ex5_2_Min_Max get = new Ex5_2_Min_Max();
+
+		// 2-1. 최솟값을 구하는 메소드 호출
+		// 2-2. 반환받은 최솟값을 변 minValue에 저장 후 출력
+		int minValue = get.findMin(arr);
+		
+		System.out.println("최소 값: " + minValue);
+		
+		// 2-3. 최댓값을 구하는 메소드 호출
+		// 2-4. 반환받은 최솟값을 변 maxValue에 저장 후 출력 
+		int maxValue = get.findMax(arr);
+		System.out.println("최대 값: " + maxValue);
+		
+
 		
 	}
 
