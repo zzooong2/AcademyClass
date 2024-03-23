@@ -1,4 +1,4 @@
-package kr.co.self_study_extends;
+package kr.co.prep;
 
 public class ManchesterUnited {
 
