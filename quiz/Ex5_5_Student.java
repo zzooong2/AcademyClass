@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Ex5_5_Student {
 	
 	// 학생
-	static String name;
+	String name;
 	
 	// 과목
-	static int kor;
-	static int eng;
-	static int mat;
-	static int sci;
+	int kor;
+	int eng;
+	int mat;
+	int sci;
 	
 	// 학생들 성적
 	double STUDENT_A_AVG = 93.5;
@@ -20,38 +20,35 @@ public class Ex5_5_Student {
 	double STUDENT_D_AVG = 80.5;
 	double STUDENT_E_AVG = 73.5;
 	
-	
-	int sum;
-	static int avg;
+	double sum;
+	static double avg;
 	
 	public void getSum() {
 		sum = kor + eng + mat + sci;
 		System.out.println(name + "님의 합계 점수는 " + sum + "점 입니다.");
 	}
 	
-	public int getAvg() {
+	public double getAvg() {
 		avg = sum / 4;
 		System.out.println(name + "님의 평균 점수는 " + avg + "점 입니다.");
 		
 		return avg;
 	}
 	
-	public void getRank() {
+	
+	public void getRank(double avg) {
+		double[] arr = {STUDENT_A_AVG, STUDENT_B_AVG, STUDENT_C_AVG, STUDENT_D_AVG, STUDENT_E_AVG};
 		
-		if(avg > 93.5) {
-			System.out.println("1등");
-		} else if (avg > 80.5) {
-			System.out.println("2등");
-		} else if (avg > 73.5) {
-			System.out.println("3등");
-		} else if (avg > 68.5) { 
-			System.out.println("4등");
-		} else if (avg > 56.0) {
-			System.out.println("5등");
-		} else if (avg < 56.0) {
-			System.out.println("6등");
+		int count = 1;
+		
+		for(int i=1; i<arr.length; i++) {
+			if (arr[i] > avg) {
+				count++;
+			} else if(arr[i] < avg) {
+				count += 0;
+			}
 		}
-		
+		System.out.println(count + "등");
 	}
 	
 }

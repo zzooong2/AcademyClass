@@ -32,32 +32,32 @@ public class Ex5_Field {
 		
 		
 		// 성적의 합계, 평균, 등수를 구하시오
+		Ex5_5_Student student = new Ex5_5_Student();
+		
 		System.out.print("국어 점수를 입력하세요: ");
-		Ex5_5_Student.kor = sc.nextInt();
+		student.kor = sc.nextInt();
 		System.out.println();
 		
 		System.out.print("영어 점수를 입력하세요: ");
-		Ex5_5_Student.eng = sc.nextInt();
+		student.eng = sc.nextInt();
 		System.out.println();
 		
 		System.out.print("수학 점수를 입력하세요: ");
-		Ex5_5_Student.mat = sc.nextInt();
+		student.mat = sc.nextInt();
 		System.out.println();
 		
 		System.out.print("과학 점수를 입력하세요: ");
-		Ex5_5_Student.sci = sc.nextInt();
+		student.sci = sc.nextInt();
 		System.out.println();
 		
 		sc.nextLine();
 		System.out.print("이름을 입력하세요: ");
-		Ex5_5_Student.name = sc.nextLine();
+		student.name = sc.nextLine();
 		System.out.println();
-		
-		Ex5_5_Student student = new Ex5_5_Student();
 		
 		student.getSum();
 		student.getAvg();
-		student.getRank();
+		student.getRank(Ex5_5_Student.avg);
 		
 	}
 
