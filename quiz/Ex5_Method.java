@@ -23,7 +23,7 @@ public class Ex5_Method {
 		// 2번.
 		int[] arr = {10, 23, 64, 5, 100};
 		
-		
+		// 객체 생성
 		Ex5_2_Min_Max get = new Ex5_2_Min_Max();
 
 		// 2-1. 최솟값을 구하는 메소드 호출
@@ -36,8 +36,11 @@ public class Ex5_Method {
 		// 2-4. 반환받은 최솟값을 변 maxValue에 저장 후 출력 
 		int maxValue = get.findMax(arr);
 		System.out.println("최대 값: " + maxValue);
+		System.out.println("---------------------");
 		
-
+		// 3. 가변인자를 담은 메서드 호출
+		get.varArgs(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		
 		
 	}
 

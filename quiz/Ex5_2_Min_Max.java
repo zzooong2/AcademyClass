@@ -26,5 +26,16 @@ public class Ex5_2_Min_Max {
 		return max;
 	}
 	
+	//3. 가변인자를 담는 메서드를 작성하시오.
+	public int varArgs(int num1, int... num2) {
+		System.out.println(num1 + " " + num2);
+		
+		for(int num : num2) {
+			System.out.println(num);
+		}
+		
+		return 0;
+	}
+	
 	
 }
