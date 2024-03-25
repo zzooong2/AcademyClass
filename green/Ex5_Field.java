@@ -24,6 +24,28 @@ public class Ex5_Field {
 		person.walk();
 		person.run();
 		System.out.println(Ex5_3_Person.phoneNumber);
-	
+		
+		
+		System.out.println("------------------------");
+		
+		// Calculate 클래스에 대한 객체 생성
+		Calculate cal = new Calculate();
+		cal.instanceNum1 = 10; // 객체.인스턴스변수
+		cal.instanceNum2 = 20; // 객체.인스턴스변수
+		
+		Calculate.classNum = 30; // 클래스.클래스변수명 
+		
+		System.out.println(cal.instanceNum1 + cal.instanceNum2);
+		System.out.println(cal.instanceNum1 + Calculate.classNum);
+		
 	}
-}
+
+} // Ex5_Field 종료
+
+	class Calculate {
+		public int instanceNum1; // 인스턴스 변수
+		public int instanceNum2; // 인스턴스 변수
+	
+		public static int classNum; // 클래스 변수
+	}
+
