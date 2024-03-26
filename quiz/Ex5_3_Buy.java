@@ -39,7 +39,7 @@ public class Ex5_3_Buy {
 		public void buyComputer() {
 			balance -= COMPUTER;
 			if(balance >= 0) {
-				System.out.print("마우스를 구입하였습니다.");
+				System.out.print("컴퓨터를 구입하였습니다.");
 				checkBalance();
 			} else if (balance < 0) {
 				minusBalance();
