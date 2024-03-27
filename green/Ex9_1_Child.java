@@ -7,4 +7,11 @@ public class Ex9_1_Child extends Ex9_1_Parent {
 	public void childMethod() {
 		System.out.println("자식 클래스");
 	}
+	
+	@Override
+	public void parentMethod() {
+		System.out.println("오버라이딩 된 메서드");
+	}
+	
+	
 }

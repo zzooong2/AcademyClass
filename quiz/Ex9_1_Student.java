@@ -19,7 +19,12 @@ public class Ex9_1_Student extends Ex9_1_Person {
 		System.out.println("나이: " + super.age);
 	}
 	
-	
+	@Override
+	public void displayInfo(String name, int age) {
+		System.out.println("이름: " + name);
+		System.out.println("나이: " + age);
+		System.out.println("학번: " + studentId);
+	}
 	
 	
 }

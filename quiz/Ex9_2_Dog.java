@@ -11,4 +11,11 @@ public class Ex9_2_Dog extends Ex9_2_Animal{
 	public void bark() {
 		System.out.println("왈왈");
 	}
+	
+	@Override
+	public void makeSound(String sound) {
+		System.out.println(name + "이(가) " + sound + " 하고 소리를 냅니다.");
+		System.out.println(name + "은(는) 사과를 좋아합니다.");
+	}
+	
 }
