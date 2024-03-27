@@ -6,10 +6,6 @@ public class Ex9_2_Animal {
 	public String name;
 	public int age;
 	
-	public Ex9_2_Animal() {
-		
-	}
-	
 	// 매개변수가 존재하는 생성자 작성
 	public Ex9_2_Animal(String name, int age) {
 		this.name = name;
