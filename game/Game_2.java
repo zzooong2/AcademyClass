@@ -1,13 +1,13 @@
 package kr.co.game;
 
 public class Game_2 {
-	
+
 	public static void main(String[] args) {
-		
+
 		Game_2_Warlord warlord = new Game_2_Warlord();
 		Game_2_Sorceress sorceress = new Game_2_Sorceress();
 		Game_2_Archer archer = new Game_2_Archer();
-		
+
 		displayInfo(warlord.ab);
 		warlord.attack();
 		warlord.attack();
@@ -15,7 +15,7 @@ public class Game_2 {
 		warlord.attack();
 		warlord.attack();
 		displayInfo(warlord.ab);
-		
+
 		displayInfo(sorceress.ab);
 		sorceress.attack();
 		sorceress.attack();
@@ -23,7 +23,7 @@ public class Game_2 {
 		sorceress.attack();
 		sorceress.attack();
 		displayInfo(sorceress.ab);
-		
+
 		displayInfo(archer.ab);
 		archer.attack();
 		archer.attack();
@@ -31,13 +31,13 @@ public class Game_2 {
 		archer.attack();
 		archer.attack();
 		displayInfo(archer.ab);
-		
+
 		displayInfo(warlord.ab);
 		displayInfo(sorceress.ab);
 		displayInfo(archer.ab);
-		
+
 	}
-	
+
 	public static void displayInfo(Game_2_CharacterAbility ab) {
 		System.out.println("---------------능력치-------------");
 		System.out.println("level: " + ab.getLevel());
