@@ -4,13 +4,10 @@ public class Game_3_Warloard implements Game_3_Character {
 
 	Game_3_CharacterAbility cAb = new Game_3_CharacterAbility();
 	Game_3_MonsterAbility mAb = new Game_3_MonsterAbility();
-
-	public Game_3_Warloard() {
-		cAb.setStr(30);
-		cAb.setDex(30);
-		cAb.setKno(30);
-		cAb.setExe(0);
-	}
+	int exp = cAb.getExe();
+	
+	
+	public Game_3_Warloard() {}
 
 	// 캐릭터의 경험치가 100 이상이라면 레벨 +1, 경험치 0으로 초기화
 	public void checkExe() {
@@ -45,10 +42,10 @@ public class Game_3_Warloard implements Game_3_Character {
 		}
 
 		// 몬스터 체력이 0이면
-		if (mAb.getHp() < 0) {
+		if (mAb.getHp() <= 0) {
 			// 캐릭터 경험치 13 증가, 처음 메뉴 리턴
 			System.out.println("몬스터가 쓰러졌습니다.");
-			cAb.setExe(cAb.getExe() + 13);
+			cAb.setExe(exp + 13);
 			checkExe();
 			mAb.setHp(100);
 			System.out.println("------------------");
@@ -64,11 +61,11 @@ public class Game_3_Warloard implements Game_3_Character {
 		System.out.println("캐릭터 체력: " + cAb.getHp());
 
 		// 캐릭터 체력 0 되면
-		if (cAb.getHp() < 0) {
+		if (cAb.getHp() <= 0) {
 			// 체력 70, 마나 70, 경험치 (현재 경험치 - 30) 초기화
 			cAb.setHp(70);
 			cAb.setMp(70);
-			cAb.setExe(cAb.getExe() - 30);
+			cAb.setExe(exp - 30);
 			System.out.println("캐릭터가 사망하였습니다.");
 			System.out.println("처음 메뉴로 돌아갑니다.");
 			System.out.println("-------------------");
@@ -98,10 +95,10 @@ public class Game_3_Warloard implements Game_3_Character {
 		}
 
 		// 몬스터 체력 0이면
-		if (mAb.getHp() < 0) {
+		if (mAb.getHp() <= 0) {
 			// 경험치 15 증가, 처음 메뉴 리턴
 			System.out.println("몬스터가 쓰러졌습니다.");
-			cAb.setExe(cAb.getExe() + 15);
+			cAb.setExe(exp + 15);
 			checkExe();
 			mAb.setHp(100);
 			System.out.println("------------------");
@@ -117,11 +114,11 @@ public class Game_3_Warloard implements Game_3_Character {
 		cAb.setHp(cAb.getHp() - monsterDamage);
 
 		// 캐릭터 체력 0 되면
-		if (cAb.getHp() < 0) {
+		if (cAb.getHp() <= 0) {
 			// 체력 70, 마나 70, 경험치 (현재 경험치 - 30) 초기화
 			cAb.setHp(70);
 			cAb.setMp(70);
-			cAb.setExe(cAb.getExe() -30);
+			cAb.setExe(exp -30);
 			System.out.println("캐릭터가 사망하였습니다.");
 			System.out.println("처음 메뉴로 돌아갑니다.");
 			System.out.println("-------------------");
@@ -151,10 +148,10 @@ public class Game_3_Warloard implements Game_3_Character {
 		}
 
 		// 몬스터 체력 0이면
-		if (mAb.getHp() < 0) {
+		if (mAb.getHp() <= 0) {
 			// 경험치 21 증가, 처음 메뉴 리턴
 			System.out.println("몬스터가 쓰러졌습니다.");
-			cAb.setExe(cAb.getExe() + 21);
+			cAb.setExe(exp + 21);
 			checkExe();
 			mAb.setHp(100);
 			System.out.println("------------------");
@@ -170,11 +167,11 @@ public class Game_3_Warloard implements Game_3_Character {
 		System.out.println("캐릭터 체력: " + cAb.getHp());
 
 		// 캐릭터 체력 0 되면
-		if (cAb.getHp() < 0) {
+		if (cAb.getHp() <= 0) {
 			// 체력 70, 마나 70, 경험치 (현재 경험치 - 30) 초기화
 			cAb.setHp(70);
 			cAb.setMp(70);
-			cAb.setExe(cAb.getExe() - 30);
+			cAb.setExe(exp - 30);
 			System.out.println("캐릭터가 사망하였습니다.");
 			System.out.println("처음 메뉴로 돌아갑니다.");
 			System.out.println("-------------------");

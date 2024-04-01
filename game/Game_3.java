@@ -32,7 +32,7 @@ public class Game_3 {
 				huntMenu();
 			} else if (menu == 2) {
 				// 인벤토리-포션
-				setPorsion();
+				setPotion();
 			} else if (menu == 3) {
 				// 스텟
 				setStatus();
@@ -162,7 +162,7 @@ public class Game_3 {
 		return true;
 	}
 
-	public static boolean setPorsion() {
+	public static boolean setPotion() {
 		do {
 			System.out.println("인벤토리-포션");
 			System.out.println("1. 체력 포션");
