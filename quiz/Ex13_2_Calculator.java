@@ -73,25 +73,25 @@ public class Ex13_2_Calculator {
 
 // 클래스 작성
 class CalcDto {
-	int firstNum;
-	int secondNum;
+	int getFirstNum;
+	int getSecondNum;
 
 	// Getter
 	public int getFirstNum() {
-		return firstNum;
+		return getFirstNum;
 	}
 
 	public int getSecondNum() {
-		return secondNum;
+		return getSecondNum;
 	}
 
 	// Setter
 	public void setFirstNum(int firstNum) {
-		this.firstNum = firstNum;
+		this.getFirstNum = firstNum;
 	}
 
 	public void setSecondNum(int secondNum) {
-		this.secondNum = secondNum;
+		this.getSecondNum = secondNum;
 	}
 
 }
@@ -118,9 +118,12 @@ class CalcProgram implements CalcInterface {
 		// 입력받은 두 개의 숫자는 CalcDto에 저장
 		try {
 		System.out.print("첫번째 숫자를 입력하세요: ");
-		cd.firstNum = sc.nextInt();
+		int firstNum = sc.nextInt();
 		System.out.print("두번째 숫자를 입력하세요: ");
-		cd.secondNum = sc.nextInt();
+		int secondNum = sc.nextInt();
+		
+		cd.setFirstNum(firstNum);
+		cd.setSecondNum(secondNum);
 		} catch(InputMismatchException e) {
 			System.out.println("숫자를 입력해주세요.");
 		}
@@ -129,23 +132,23 @@ class CalcProgram implements CalcInterface {
 	// 오버라이딩하여 계산 로직 작성
 	@Override
 	public void add(CalcDto cd) {
-		System.out.println(cd.firstNum + cd.secondNum);
+		System.out.println(cd.getFirstNum() + cd.getSecondNum());
 	}
 
 	@Override
 	public void sub(CalcDto cd) {
-		System.out.println(cd.firstNum - cd.secondNum);
+		System.out.println(cd.getFirstNum - cd.getSecondNum);
 	}
 
 	@Override
 	public void mul(CalcDto cd) {
-		System.out.println(cd.firstNum * cd.secondNum);
+		System.out.println(cd.getFirstNum * cd.getSecondNum);
 	}
 
 	@Override
 	public void divShare(CalcDto cd) {
 		try {
-			System.out.println(cd.firstNum % cd.secondNum);
+			System.out.println(cd.getFirstNum % cd.getSecondNum);
 		} catch (ArithmeticException e) {
 			System.out.println("0으로 나눌 수 없습니다.");
 		}
@@ -154,7 +157,7 @@ class CalcProgram implements CalcInterface {
 	@Override
 	public void divRemain(CalcDto cd) {
 		try {
-			System.out.println(cd.firstNum / cd.secondNum);
+			System.out.println(cd.getFirstNum / cd.getSecondNum);
 		} catch (ArithmeticException e) {
 			System.out.println("0으로 나눌 수 없습니다.");
 		}
