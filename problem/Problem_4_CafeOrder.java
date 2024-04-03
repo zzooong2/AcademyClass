@@ -48,7 +48,7 @@ public class Problem_4_CafeOrder {
 //			orderList가 비어있을 경우 “주문 목록이 비어 있습니다.” 출력
 //			비어있지 않을 경우 전체 주문 목록(orderList)에 대해 주문자 이름, 주문 번호, 주문 물품을 출력합니다.
 				if (orderList.isEmpty()) {
-					System.out.println("주문 목록이 비어 있습니다.");
+					System.out.println("주문 목록이 비어 있습니다."); 
 				} else if (!orderList.isEmpty()) {
 					for (int i = 0; i < orderList.size(); i++) {
 						System.out.println("-------------------------");
@@ -63,8 +63,8 @@ public class Problem_4_CafeOrder {
 			case 3:
 //			“프로그램을 종료합니다.“ 출력 후 종료합니다.
 				System.out.println("프로그램을 종료합니다.");
-				sc.nextLine();
 				sc.close();
+				System.exit(0);
 				break;
 			default:
 //			“존재하지 않는 메뉴입니다.” 출력 후 처음 메뉴로 돌아갑니다
