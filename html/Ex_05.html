@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- placeholder: input 배너에 표기해줄 수 있음 -->
+    <input type="text" placeholder="text"> <br>
+    <input type="password" placeholder="pw"> <br>
+
+    <!-- form: 태그를 하나로 묶어둠 -->
+    <!-- id: 요소 하나하나를 식별할 수 있는 속성-->
+    <!-- fruit: 중복선택 유무 -->
+    <!-- label: 요소를 클릭하는 행위를 지정한 속성으로 옮겨주는 태그 (input태그에 id와 label태그의 for를 일치시켜주어야 함)-->
+
+    <!-- checkbox: 사용자가 선택할 수 있는 박스를 생성하는 태그, 다중 선택 가능 -->
+    <form action="">
+        <input type="checkbox" id="apple" name="fruit" placeholder="checkbox 타입"> <label for="apple"> 사과 </label> 
+        <input type="checkbox" id="banana" name="fruit" placeholder="checkbox 타입"> <label for="banana"> 바나나 </label>
+        <input type="checkbox" id="orange" name="fruit" placeholder="checkbox 타입"> <label for="orange"> 오렌지 </label>
+    </form>
+
+    <!-- radio: 사용자가 선택할 수 있는 영역을 생성하는 태그, 다중 선택 불가 -->
+    <form action="">
+        <input type="radio" id="appleradio" name="fruit"> <label for="appleradio"> 사과 </label>
+        <input type="radio" id="bananradio" name="fruit"> <label for="bananradio"> 바나나 </label>
+        <input type="radio" id="orangeradio" name="fruit"> <label for="orangeradio"> 오렌지 </label>
+    </form>
+    
+    <br>
+
+    <!-- email: email을 입력받는 속성 -->
+    <form action="#">
+        <input type="email" placeholder="email">
+        <button type="submit"> 이메일 등록 </button>
+    </form>
+
+    <br>
+
+    <!-- number: 숫자를 입력받는 속성 -->
+    <input type="number" placeholder="숫자">
+
+    <!-- hidden: 사용자에게 보이지않는 정보를 서버로 전달하기 위한 속성 -->    
+    <input type="hidden"> <br>
+
+    <br>
+
+    <!-- value: 초기값을 지정해주고 싶을 때, 사용자가 입력하지 않아도 되는 값을 표현할 때 사용하는 태그 (사용자 수정 가능) -->
+    <!-- readonly: 수정 불가 (읽기 전용) / ⭐️ javascript, 서버에서도 수정이 되지 않게끔 설계해야함 ⭐️ -->
+    <input type="text" value="readonly" readonly> <br>
+    <!-- disabled: 수정 불가 (읽기 전용) / readonly 속성과 다르게 선택도 안되고 스타일도 상이함) -->
+    <input type="text" value="disabled" disabled> <br>
+    <!-- maxlength: 입력할 수 있는 문자열 제한 -->
+    <input type="text" value="readonly" maxlength="10"> <br>
+
+    <br>
+
+    <!-- required: 값을 반드시 입력하게 제한 -->
+    <form action="#">
+        <input type="text" value="required" maxlength="15" required>
+        <button type="submit"> 등록 </button>
+    </form>
+</body>
+</html>
