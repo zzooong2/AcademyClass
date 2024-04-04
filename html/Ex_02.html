@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <!-- 시맨틱 태그: 콘텐츠의 형식, 의미, 구조를 설명하는 태그 (thead, tbody)-->
+        <thead> <!-- thead: 테이블의 헤더(정보) -->
+            <tr> <!-- tr: 테이블의 행 생성 -->
+                <th>이름</th> <!-- th: 테이블의 열 생성(중앙 정렬 및 굵은 글씨) -->
+                <th>나이</th>
+                <th>성별</th>
+            </tr>
+        </thead>
+        <tbody> <!-- tbody: 테이블의 본문 내용 -->
+            <tr>
+                <td>김현중</td> <!-- td: 테이블의 열 생성 -->
+                <td>31</td>
+                <td>남자</td>
+            </tr>  
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- style: 테이블을 꾸며주는 태그 -->
+    <!-- border: 테이블에 표를 만들어주는 태그 -->
+    <table style="border: 1px solid gray; text-align: center;">
+        <thead>
+            <tr>
+                <th  style="border: 1px solid black;"> 이름 </th>
+                <th  style="border: 1px solid black;"> 나이 </th>
+                <th  style="border: 1px solid black;"> 성별 </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="border: 1px solid black;"> 김현중 </td>
+                <td style="border: 1px solid black;"> 31 </td>
+                <td style="border: 1px solid black;" rowspan="5"> 남자 </td> <!-- rowspan: 테이블 열 병합 -->
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;"> 박민수 </td>
+                <td style="border: 1px solid black;"> 31 </td>
+                <!-- <td style="border: 1px solid black;"> 남자 </td> -->
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;"> 홍해연 </td>
+                <td style="border: 1px solid black;"> 31 </td>
+                <!-- <td style="border: 1px solid black;"> 남자 </td> -->
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;"> 강승표 </td>
+                <td style="border: 1px solid black;"> 31 </td>
+                <!-- <td style="border: 1px solid black;"> 남자 </td> -->
+            </tr>
+            <tr>
+                <td style="border: 1px solid black;"> 노종국 </td>
+                <td style="border: 1px solid black;"> 31 </td>
+                <!-- <td style="border: 1px solid black;"> 남자 </td> --> 
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
