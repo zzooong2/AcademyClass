@@ -1,0 +1,91 @@
+/* 전체 선택자 
+    - 모든 요소에 스타일을 적용
+
+*{
+    color:pink;
+}
+
+*/
+
+
+/* 태그 선택자 
+    - 태그에 대한 스타일을 부여해두고 태그를 사용할 때 적용시키는 방법
+*/
+span{
+    color:pink;
+    font-size:10px;
+}
+
+/* 속성 선택자 
+    - css 파일에 설정해둔 속성을 적용한 태그에 스타일을 부여하는 방법(모든 속성 사용가능)
+*/
+p[class="p-tag-text"]{
+    color:red;
+    font-size: 10px;
+}
+
+/* 아이디 선택자 
+- css 파일에 설정해둔 속성을 적용한 태그에 스타일을 부여하는 방법
+*/
+#p-tag-id{
+    color: green;
+    font-size: 15px;
+}
+
+/* 클래스 선택자 */
+.p-tag-class {
+    color:black;
+}
+
+/* 그룹 선택자 */
+#p-tag-id, .p-tag-class {
+    color:gray;
+}
+
+/* 후손 선택자 */
+div h4 {
+    background-color: skyblue;
+}
+
+/* 자식 선택자 */
+div > h4 {
+    background-color: bisque;
+}
+
+/* 동위 선택자 (+ or ~) */
+h3 + p {
+    background-color: gray;
+}
+
+/* 반응 선택자 */
+.button:hover{ /* 마우스 커서가 버튼 위로 올라올 때 */
+    background-color: yellow;
+}
+
+.button:active{ /* 버튼을 클릭할 때 */
+    background-color: blue;
+}
+
+/*
+.button:focus{
+    background-color: red;
+}
+*/
+
+/* 상태 선택자 */
+
+input:focus {
+    border:5px solid purple;
+}
+
+input:enabled {
+    color: green;
+}
+
+input:disabled {
+    color: red;
+}
+
+
+
+

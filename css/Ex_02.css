@@ -1,0 +1,45 @@
+.color{
+    color: green;
+}
+
+/* red, green, blue */
+.color-rgb{
+    color: rgb(255, 100, 200);
+}
+
+/* red, green, blue, Transparency */
+.color-rgba{
+    color: rgb(170, 100, 200, 0.3);
+}
+
+/* #xxxxxx */
+.color-hex{
+    color: #230001;
+}
+
+.parent{
+    width: 200px;
+    height: 200px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: italic;
+    text-align: center;
+    background-color: gray;
+    border: 2px solid black;
+}
+
+/* %: 부모 크기의 백분율 */
+/* em: 글꼴 크기 x 2 */
+/* rem: 루트 요소(일반적으로 html 16)의 글꼴 크기와 비교하여 상대적으로 표현 */
+.child{
+    width: 200;
+    height: 2em;
+    font-size: 10px;
+    font-weight: 100;
+    font-style: oblique;
+    text-align: center;
+    text-decoration: line-through;
+    background-color: pink;
+    border: 2px solid skyblue;
+}
+

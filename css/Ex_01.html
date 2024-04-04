@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 내부 style: html 문서 head태그 안에 기재하여 스타일을 부여하는 방법  -->
+    <style>
+        pre{
+            color: purple;
+            font-size: 24px;
+        }
+    </style>
+    <!-- 외부 style: css 스타일을 부여하는 파일을 별도로 만들고 html 문서 head태그 안에 link 태그를 이용하여 파일과 연결 -->
+    <link rel="stylesheet" href="./Ex_01.css">
+</head>
+
+<body>
+    <!-- inline style: 태그에 직접 스타일을 부여하는 방법 -->
+    <p style="color: green; font-size: 32px;"> 인라인 스타일 방식 </p>
+    <!-- 내부 style -->
+    <pre>
+        내부 스타일 시트 방식
+    </pre>
+    <!-- 외부 style -->
+    <span> 외부 스타일 시트 방식 (태그 선택자) </span>
+
+    <p>1. 전체 선택자</p>
+    <p id="p-tag-id">2. 아이디 선택자</p>
+    <p class="p-tag-text">3. 속성 선택자</p>
+    <p class="p-tag-class">4. 클래스 선택자</p>
+    <p class="p-tag-text, p-tag-class">5. 그룹 선택자</p>
+    <br>
+    <div> <!-- div: 내부에 작성된 내용들을 하나로 묶어주는 태그 -->
+        <h4>6. 자식 선택자</h4>
+        <ul>
+            <li><h4>7. 후손 선택자</h4></li>
+            <li><h4>7. 후손 선택자</h4></li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>8. 동위 선택자</h3>
+        <p>동위 관계</p>
+        <p>동위 관계</p>
+    </div>
+
+    <button class="button"> 버튼 </button>
+    <br><br><br>
+
+    이름: <input type="text" id="input-name" value="김현중" disabled> <br>
+    아이디: <input type="text" id="input-id"> <br>
+    비밀번호: <input type="text" id="input-pw">
+</body>
+</html>
