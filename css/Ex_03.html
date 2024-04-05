@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .display-h3{
+            /* display: inline <-> block 요소 변경 속성 */
+            display: inline;
+        }
+
+        .display-a, .display-strong{
+            display: block;
+        }
+
+        .box{
+            width: 400px;
+            height: 100px;
+            background-color: gray;
+            padding: 20px;
+            border: 5px solid pink;
+            margin: 10px;
+            overflow: visible;
+        }
+
+        .boder-box{
+            border-style: solid;
+            border-width: 2px;
+            border-color: pink;
+            /* 위 오른쪽 아래 왼쪽 */
+            /* border-width: 1px 2px 3px 4px; */
+            /* border-color: hotpink red black white; */
+            /* border: 3px solid black <- 이와같이 한줄로 설정가능 */
+            /* !important 키워드를 이용해서 1순위로 적용시켜줄 수 있음(사용 지양) */    
+        }
+
+
+        table {
+            width: 500px;
+            border: 2px solid hotpink;
+            background-color: rgb(237, 198, 205);
+            text-align: center;
+        }
+
+        tbody td{
+            background-color: white;
+        }
+
+        thead th{
+            border: 1px solid black;
+            background-color: rgb(179, 255, 0);
+        }
+    </style>
+
+</head>
+<body>
+    <!-- 블록 레벨 요소 -->
+    <h3 class="display-h3">게시판</h3>
+    <h3 class="display-h3">배너</h3>
+    <hr>
+
+    <!-- 인라인 레벨 요소 -->
+    <a href="https://google.co.kr" class="display-a" target="_blank"> >구글< </a>
+    <strong class="display-strong"> 문자 강조 </strong>
+    <hr>
+
+    <div class="box">
+        우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마 우주하마
+    </div>
+    <hr>
+
+    <div class="boder-box">
+        보더콜리
+    </div>
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>선수명</th>
+                <th>포지션</th>
+                <th>등번호</th>
+                <th>키(cm)</th>
+                <th>몸무게(kg)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>브루노 페르난데스</td>
+                <td>CAM</td>
+                <td>8</td>
+                <td>179</td>
+                <td>69</td>
+            </tr>
+            <tr>
+                <td>메이슨 마운트</td>
+                <td>CM</td>
+                <td>7</td>
+                <td>181</td>
+                <td>74</td>
+            </tr>
+            <tr>
+                <td>알레한드로 가르나초</td>
+                <td>LW</td>
+                <td>17</td>
+                <td>180</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>코비 마이누</td>
+                <td>CDM</td>
+                <td>37</td>
+                <td>183</td>
+                <td>71</td>
+            </tr>
+            <tr>
+                <td>디오구 달로</td>
+                <td>RWB</td>
+                <td>20</td>
+                <td>183</td>
+                <td>76</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

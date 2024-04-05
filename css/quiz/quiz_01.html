@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- 내부 스타일 css -->
+    <style>
+
+    table {
+        width: 1000px;
+        border: 1px solid black;
+        background-color: powderblue;
+        text-align: center;
+        /* border-collapse: collapse; */
+    }
+
+    table th {
+        height: 30px;
+        border: 1px solid black;
+        font-weight: 700;
+    }
+
+    table td{
+        height: 30px;
+        border: 1px solid black;
+        background-color: aliceblue;
+    }
+
+    .last{
+        border: 1px solid black;
+        height: 50px;
+        text-align: center;
+        background-color: aliceblue;
+    }
+
+    .td-red{
+        color: red;
+    }
+
+    .td-blue{
+        color: blue;
+    }
+
+    </style>
+
+</head>
+<body>
+    <h1>실습 문제 1</h1>
+    <h3>2023년 09월 가계부 : <a href="/Users/zzooong2/green/Green/src/kr/co/css/quiz/quiz_01.html" style="font-size: 19px;">조회하기</a> </h3> 
+
+    <table>
+        <thead>
+            <tr>
+                <th>날짜</th>
+                <th>입금</th>
+                <th>내역</th>
+                <th>출금</th>
+                <th>내역</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>2023-09-20</td>
+                <td class="td-blue">+100,000원</td>
+                <td>부수입(투잡)</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>2023-09-21</td>
+                <td>-</td>
+                <td>-</td>
+                <td class="td-red">-350,000원</td>
+                <td>마우스, 키보드, 의자 구입</td>
+            </tr>
+            <tr>
+                <td>2023-09-22</td>
+                <td>-</td>
+                <td>-</td>
+                <td class="td-red">-135,000원</td>
+                <td>인터넷, 핸드폰비</td>
+            </tr>
+            <tr>
+                <td>2023-09-23</td>
+                <td class="td-blue">+1,000,000원</td>
+                <td>월급</td>
+                <td class="td-red">-250,000원</td>
+                <td>카드값</td>
+            </tr>
+            <tr>
+                <td colspan="5" class="last";><strong>남은 금액 : 590,000원 </strong></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
