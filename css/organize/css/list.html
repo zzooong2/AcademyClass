@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        p{
+            font-weight: bold;
+        }
+
+        .ul-style-1{
+            list-style-type: circle; /* 하얀 동그라미 */
+            list-style-type: disc; /* 검정 동그라미 */
+            list-style-type: square; /* 검정 네모 */
+            list-style-position: inside; /* 기본값: outside */
+            /* list-style-image: url("../img/백재롱.webp");  */
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../main.html"><img src="../img/home.jpeg" alt="home" width="50px"></a>
+    <fieldset>
+        <legend><h2>List</h2></legend>
+        <ol>
+            <p><h4>ul: 순서가 없는 목록</h4></p>
+            <ul class="ul-style-1">
+                <li>HTML</li>
+                    <ul>
+                        <li>텍스트 태그 활용</li>
+                        <li>이미지, 하이퍼링크 태그 활용</li>
+                    </ul>
+                    <li>JavaScript</li>
+                    <ul>
+                        <li>jQuery</li>
+                        <li>Ajax</li>
+                        <li>TypeScript</li>
+                        <li>React</li>
+                        <li>Vue</li>
+                        <li>Node</li>
+                    </ul>
+                    <li>CSS</li>
+                </ul>
+        </ol>
+    </fieldset>
+</body>
+</html>
