@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .favorite{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <a href="../main.html"><img src="../img/home.jpeg" alt="home" style="width: 50px;"></a>
+    <fieldset>
+        <legend><h2>Selector</h2></legend>
+        <ol>
+            <p>선택자: 특정 HTML 요소를 선택할 때 사용</p>
+
+            <p>전체 선택자(*): 요소 전체를 선택할 때 사용 </p>
+                <pre>
+                    * {
+                        속성: 값
+                        margin: 0;
+                        padding: 0
+                        .
+                        .
+                        .
+                    }
+                </pre>
+
+            <p>태그 선택자: HTML 파일 내에서 특정 태그들을 모두 선택할 때 사용</p>
+                <pre>
+                    태그(input, form, li ...) {
+                        속성: 값;
+                        .
+                        .
+                        .
+                    }
+                </pre>
+
+            <p class="favorite">클래스 선택자: 특정 클래스를 가진 요소를 선택할 때 사용</p>
+                <pre class="favorite">
+                    .클래스명{
+                        속성: 값;
+                        .
+                        .
+                        .
+                    }
+                </pre>
+
+            <p>아이디 선택자: 특정 아이디를 가진 요소를 선택할 때 사용(다수 불가)</p>
+                <pre>
+                    #아이디{
+                        속성: 값;
+                        .
+                        .
+                        .
+                    }
+                </pre>
+
+            <p>속성 선택자: 특정 속성을 가진 요소를 선택할 때 사용</p>
+                <pre>
+                    선택자[속성=값]{
+                        속성: 값;
+                        .
+                        .
+                        .
+                    }
+                </pre>
+                <pre>
+                    li id="a" class="element" a /li
+                    li id="b" class="element" b /li
+                    li id="c" class="element" c /li
+                    li id="d" class="element" d /li
+                    li id="e" class="element" e /li
+
+                    li[id="c"] ➡️ c
+                </pre>
+
+            <p>자식 선택자: 부모요소의 바로 아래에 있는 자식요소를 선택할 때 사용</p>
+                <pre>
+                    부모요소 > 자식요소 {
+                        속성: 값;
+                        .
+                        .
+                        .
+                    }
+                </pre>
+
+            <p>후손 선택자: 부모요소의 아래 어딘가에 있는 후손요소를 선택할 때 사용</p>
+                <pre>
+                    부모요소 후손요소{
+                        속성: 값;
+                        .
+                        .
+                        .
+                    }        
+                </pre>
+        </ol>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .favorite{
+            color:green;
+        }
+    </style>
+</head>
+<body>
+    <a href="../main.html"><img src="../img/home.jpeg" alt="home" style="width: 50px;"></a>
+    <fieldset>
+        <legend><h2>Element</h2></legend>
+            <ol>
+                <p class="favorite">input type="text": 사용자로부터 값을 입력받을 때 사용</p>
+                <input type="text">
+                
+                <hr>
+
+                <p class="favorite">input type="password": 사용자로부터 비밀번호 값을 입력받을 때 사용 -> 자동 마스킹</p>
+                <input type="password">
+                
+                <hr>
+                
+                <p class="favorite">input type:"number": 숫자를 입력받을 때 사용 (스핀박스 생성)</p>
+                <input type="number">
+                
+                <hr>
+                
+                <p>input type="search, url, email": text 기능에 세분화된 기능을 제공 -> form 태그로 묶어줘야함</p>
+                <form action="#">
+                    <input type="search"><br>
+                    <input type="url"><br>
+                    <input type="email"><br>
+                    <button type="submit">버튼</button>
+                </form>
+                
+                <hr>
+                
+                <p class="favorite">textarea: 여러줄을 입력받을 때 사용</p>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                
+                <hr>
+
+                <p>input type="range": 슬라이드바를 사용한 숫자를 입력받음</p>
+                <input type="range">
+                
+                <hr>
+
+                <p>input type="datetime-local, date, month, week, time": 날짜, 시간을 입력 받을 때 사용</p>
+                <input type="datetime-local">
+                <input type="date">
+                <input type="month">
+                <input type="week">
+                <input type="time">
+                
+                <hr>
+
+                <p class="favorite">input type="radio": 하나만 선택해야할 때 사용 - form태그 내부에 동일한 이름으로 선언된 요소만 선택 가능</p>
+                <p class="favorite"> ⬆️⬆️⬆️⬆️ checkd 속성을 이용하면 항상 체크되어있음 ⬆️⬆️⬆️⬆️ </p>
+                <input type="radio" name="동일하게" checked> 선택 안함
+                <input type="radio" name="동일하게"> 남자 
+                <input type="radio" name="동일하게"> 여자
+                
+                <hr>
+
+                <p class="favorite">input type="checkbox": 여러개 선택이 가능할 때 사용</p>
+                <input type="checkbox" name="상이하게"> 사과
+                <input type="checkbox" name="상이하게"> 바나나
+                <input type="checkbox" name="상이하게"> 파인애플
+                
+            </ol>
+    </fieldset>
+</body>
+</html>
