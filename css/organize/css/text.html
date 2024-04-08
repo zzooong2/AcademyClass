@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p{
+            font-weight: bold;
+        }
+
+        #shadow1{
+            text-shadow: 1px 1px green;
+        }
+
+        #shadow2{
+            text-shadow: 1px 1px 5px green;
+        }
+
+        #shadow3{
+            text-shadow: 1px 1px 5px green,
+                         0px -3px 4px yellow,
+                         5px -4px 6px blue,
+                         2px 3px 1px red;
+            /* font-size: 40px; */
+        }
+    </style>
+</head>
+<body>
+    <a href="../main.html"><img src="../img/home.jpeg" alt="home" style="width: 50px;"></a>
+    <fieldset>
+        <legend><h2>Text</h2></legend>
+        <ol>
+            <p>font-size: 크기 변경 - px, %, ex, rm, vh ....</p>
+
+            <p>text-align: 정렬</p>
+                <ul>
+                    <li>left: 왼쪽</li>
+                    <li>center: 중심</li>
+                    <li>right: 오른쪽</li>
+                </ul>
+
+            <p>font-weight: 굵기 변경</p>
+                <ul>
+                    <li>normal: 기본값</li>
+                    <li>bold: 굵은 텍스트</li>
+                    <li>100 ~ 900: 값이 클수록 굵어짐</li>
+                </ul>
+
+            <p>font-style: 기울기 변경</p>
+                <ul>
+                    <li style="font-style: normal">normal: 기본값</li>
+                    <li style="font-style: oblique">oblique: 기울어진 텍스트</li>
+                    <li style="font-style: italic">italic: 기울어진 텍스트</li>
+                </ul>
+
+            <p>text-decoration: 밑줄, 취소선, 윗줄 등의 효과</p>
+                <ul>
+                    <li style="text-decoration: none;">none: 기본값</li>
+                    <li style="text-decoration: underline">underline: 밑줄</li>
+                    <li style="text-decoration: line-through">line-through: 취소선</li>
+                    <li style="text-decoration: overline">overline: 윗줄</li>
+                    <li style="text-decoration: underline overline">underline overline: 밑줄 + 윗줄</li>
+                </ul>
+
+            <p>text-shadow: 그림자 효과</p>
+                <ul>
+                    <li id="shadow1">shadow</li>
+                    <li id="shadow2">shadow</li>
+                    <li id="shadow3">shadow</li>
+                </ul>
+        </ol>
+    </fieldset>
+</body>
+</html>
