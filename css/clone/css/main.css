@@ -1,0 +1,85 @@
+/* header */
+
+body{
+    margin: 0;
+}
+
+.header{
+    background-color: grey;
+    text-align: center;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.header-banner{
+    text-align: right;
+    width: auto;
+    color: white;
+    font-size: 15px;
+    background-color: grey;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.logo{
+    background-color: grey;
+    display: block;
+}
+
+/* navigation */
+
+.navigation{
+    background-color: rgb(108, 108, 108);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.location{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* main */
+
+.main{
+    background-color: rgb(224, 224, 224);
+    width: auto;
+    height: 500px;
+}
+
+/* footer */
+
+.footer{
+    background-color: grey;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* a */
+a:link{
+    color: white;
+    text-decoration: none;
+}
+
+a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color: aqua;
+    text-decoration: underline;
+}
+
+a:active{
+    color: green;
+    text-emphasis: none;
+}
+

@@ -1,0 +1,39 @@
+.home{
+    margin: 10px;
+    border: 1px solid lightgrey;
+    background-color: white;
+    height: 500px;
+}
+
+.text{
+    margin-left: 10px;
+}
+
+label{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input{
+    border-radius: 3px;
+    border-color: lightgrey;
+    height: 20px;
+    width: 90%;
+}
+
+button{
+    margin-top: 10px;
+    display: block;
+    width: 70px;
+    height: 30px;
+    border-radius: 3px;
+    background-color: grey;
+    color: white;
+    font-weight: 100;
+}
+
+textarea{
+    width: 90%;
+    height: 200px;
+}

@@ -1,0 +1,22 @@
+.main-menu{
+    position: relative;
+    display: inline;
+}
+
+
+.sub-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+}
+
+.main-menu:hover .sub-menu {
+    display: inline-block;
+    border: 1px solid black;
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: grey;
+    margin-left: 3px;
+}
