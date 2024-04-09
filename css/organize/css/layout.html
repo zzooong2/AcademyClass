@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        p{
+            font-weight: bold;
+        }
+
+        pre{
+            position: relative;
+            right: 170px;
+        }
+
+        .favorite{
+            color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="../main.html"><img src="../img/home.jpeg" alt="home" style="width: 50px;"></a>
+    <fieldset>
+        <legend><h2>Layout</h2></legend>
+            <ol>
+                <p>block: 블럭 레벨 요소로 변경</p>
+                    <pre>
+                        - p 태그
+                        - diplay: block;
+                    </pre>
+
+                <p>inline: 인라인 레벨 요소로 변경</p>
+                    <pre>
+                        - span 태그
+                        - diplay: inline;
+                    </pre>
+
+                <p class="favorite">inline-block: 컨텐츠 영역의 가로/세로 길이 변경 가능한 인라인 레벨 요소로 변경</p>
+                    <pre>
+                        - diplay: inline-block;
+                    </pre>
+
+                <p class="favorite">none: 요소 숨김 (렌더링 O, 영역차지 X, 가시성 X)</p>
+                    <pre>
+                        - diplay: none;
+                    </pre>
+            </ol>
+    </fieldset>
+</body>
+</html>

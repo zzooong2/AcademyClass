@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .border-line{
+            position: relative;
+            right: 100px;
+        }
+
+        .border-style{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin-bottom: 30px;
+        }
+
+        .border-style-1{
+            border-style: dotted;
+            border-bottom-right-radius: 10px;
+            box-shadow: 5px 5px 10px 10px lightgrey;
+        }
+
+        .border-style-2{
+            margin-top: 30px;
+            border-color: green;
+            border-style: outset;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+
+        .border-style-3{
+            border-top: dashed;
+            border-right: double;
+            border-bottom: dashed;
+            border-left: ridge;
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 10px 10px 5px 5px lightgrey;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="../main.html"><img src="../img/home.jpeg" alt="home" style="width: 50px;"></a>
+    <fieldset>
+        <legend><h2>Border Line</h2></legend>
+        <ol>
+            <pre class="border-line">
+                ------------------------
+                선택자 { 
+                    border-위치-"xxxx": 
+                }
+                ------------------------
+
+                "xxxx" 
+
+                - style: 스타일
+                - color: 색상
+                - width: 두께
+                - radius: 모깎기
+                - box-shadow: 그림자
+               
+            </pre>
+
+            <ol>
+                <div class="border-style"></div>
+                <div class="border-style border-style-1"></div>
+                <div class="border-style border-style-2"></div>
+                <div class="border-style border-style-3"></div>
+            </ol>
+        </ol>
+</body>
+</html>
