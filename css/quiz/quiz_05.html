@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<!-- 
+
+    회원가입 페이지를 설계하며 아래의 UI 요구사항과 UI 표준 및 지침에 의거하여 HTML 기반 프로토 타입을 구현하세요.
+    * UI 표준 및 지침
+        W3C 유효성 검사 
+
+    *프로토 타입 구현
+        HTML로 구현
+
+            UI 요구사항 확인 
+            [ 조건 ]
+            ● id 속성을 아래와 같이 설정
+            - 아이디 : id
+            - 비밀번호 : password
+            - 비밀번호 확인 : password-check
+            - 이름 : name
+            - 휴대폰번호 : phone
+            ● 각각의 라벨을 클릭했을 때 해당하는 input 요소가 선택되어야 합니다.
+            ● 아이디는 이메일 형식으로 입력받습니다.
+            ● 아이디는 최대 12자 까지만 입력 가능합니다.
+            ● 비밀번호와 비밀번호 확인는 패스워드 형식으로 마스킹 처리가 된 상태로 입력 받습니다.
+            ● 비밀번호 및 비밀번호 확인은 6자 이상, 12자리 이하까지 입력 가능합니다.
+            ● 아이디, 비밀번호, 비밀번호 확인는 필수 입력 / 그 외 입력칸은 선택합니다.
+            ● ‘전송’ 버튼을 생성합니다.
+
+ -->
+
+<body>
+    <form>
+        <label for="id">ID: </label>
+        <input type="email" id="id" placeholder="이메일을 입력해주세요" required maxlength="12">
+
+        <br><br>
+
+        <label for="pw">PW: </label>
+        <input type="password" id="pw" placeholder="비밀번호를 입력해주세요" required minlength="6" maxlength="12">
+
+        <br><br>
+
+        <label for="confirm_password">PW-check: </label>
+        <input type="password" id="confirm_password" placeholder="비밀번호를 확인" required minlength="6" maxlength="12">
+
+        <br><br>
+
+        <label for="name">이름: </label>
+        <input type="text" id="name" placeholder="성함을 입력해주세요">
+
+        <br><br>
+
+        <label for="phone">연락처: </label>
+        <input type="text" id="phone" placeholder="연락처 숫자만 입력해주세요">
+
+        <br><br>
+
+        <button>전송</button>
+    </form>
+</body>
+</html>
