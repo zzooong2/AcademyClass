@@ -26,6 +26,7 @@ body{
 .logo{
     background-color: grey;
     display: block;
+    height: 10px;
 }
 
 /* navigation */
@@ -58,8 +59,8 @@ body{
     text-align: center;
     color: white;
     font-size: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* a */

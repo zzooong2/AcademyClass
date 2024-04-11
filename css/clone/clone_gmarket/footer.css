@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    background-color: rgb(230, 230, 230);
+    color: rgb(117, 124, 138);
+}
+
+/* ------------------banner------------------ */
+
+select{
+    border-radius: 5px;
+    border: 1px solid rgb(236, 236, 236);
+    background-color: rgb(247, 247, 247);
+    color: rgb(117, 124, 138);
+    height: 30px;
+    font-size: 14px;
+    float: right;
+    padding-top: 5px;
+}
+
+.container{
+    width: 0 auto;
+}
+
+.container > ul{
+    margin: 0;
+}
+
+.banner {
+    height: 30px;
+    font-size: 14px;
+    color: rgb(117, 124, 138);
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding-left: 0;
+    padding-top: 10px;
+}
+
+.banner > li{
+    display: inline-block;
+    border-right: 1px solid lightgrey;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* ------------------main------------------ */
+
+.main{
+    height: 120px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding-left: 20px;
+}
+
+.gmarket{
+    display: inline-block;
+    width: 50%;
+}
+
+.cscenter{
+    display: inline-block;
+}
+
+.half {
+    font-size: 12px;
+}
+
+.half > a {
+    border: 1px solid lightgrey;
+    font-size: 12px;
+    background-color: rgb(245, 245, 245);
+}
+
+/* ------------------low------------------ */
+
+.sub{
+    padding-left: 20px;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+.last{
+    padding-left: 20px;
+    font-size: 10px;
+}
+
+a {
+    color: inherit;
+}

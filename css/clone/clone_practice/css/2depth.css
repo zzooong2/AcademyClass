@@ -1,8 +1,13 @@
+li{
+    margin-top: 4px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+}
+
 .main-menu{
     position: relative;
     display: inline;
 }
-
 
 .sub-menu{
     display: none;
