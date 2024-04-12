@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #999;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .effect-1{ 
+            animation: effect-1;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .effect-2{ 
+            animation: effect-2;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        
+        .effect-3{ 
+            animation: effect-3;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .effect-4{ 
+            animation: effect-4;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        .effect-5{ 
+            animation: effect-5;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes effect-1{
+            0%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+            50%{
+                opacity: 0;
+                transform: translateX(80px) scale(3);
+            }
+
+            100%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes effect-2{
+            0%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+            50%{
+                opacity: 0;
+                transform: translateX(40px) scale(3);
+            }
+
+            100%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes effect-3{
+            0%{
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50%{
+                opacity: 0;
+                transform: scale(3);
+            }
+
+            100%{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes effect-4{
+            0%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+            50%{
+                opacity: 0;
+                transform: translateX(-40px) scale(3);
+            }
+
+            100%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+        }
+
+        @keyframes effect-5{
+            0%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+            50%{
+                opacity: 0;
+                transform: translateX(-80px) scale(3);
+            }
+
+            100%{
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle effect-1"></div>
+    <div class="circle effect-2"></div>
+    <div class="circle effect-3"></div>
+    <div class="circle effect-4"></div>
+    <div class="circle effect-5"></div>
+</body>
+</html>
