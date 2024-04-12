@@ -36,8 +36,8 @@ select{
     color: rgb(117, 124, 138);
     border-bottom: 0.5px solid rgb(207, 207, 207);
     padding-left: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .banner > li{
