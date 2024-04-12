@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-size: 40px;
+        }
+
+        .aside{
+            float: right;
+            width: 500px;
+            height: 500px;
+            background-color: #999;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body{
+                color: blue;
+            }
+        }
+
+        @media (min-width: 1024px){
+            body{
+                color: red;
+            }
+        }
+
+        @media (min-width: 905px){
+            .aside{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    Media Query
+    <div class="aside">MEDIA QUERY</div>
+</body>
+</html>
