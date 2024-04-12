@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body{
+        margin: 0px;
+    }
+
+    /* header css */
+    header{
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0px; /* 20px -> 상, 0px -> 하 */
+    }   
+
+    /* navigation css */
+    nav{
+        background-color: #666;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        padding: 5px 5px; /* 상, 하 */
+    }
+
+    nav ul{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    nav ul li{
+        display: inline-block;
+        margin: 0px 15px; /* 상+하, 좌+우 */
+    }
+
+    nav ul li a{
+        color: #fff; 
+        text-decoration: none;
+    }
+
+    nav ul li a:hover{
+        text-decoration: underline;
+        color: pink;
+    }
+
+    /* main css */
+    main{
+        height: 70vh; /* vh: 웹 브라우저의 높잇값을 기준으로 영역의 크기를 결정 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section{
+        text-align: center;
+    }
+
+    /* button css */
+
+    button{
+        background-color: antiquewhite;
+    }
+
+    button:hover{
+        background-color: aquamarine;
+    }
+    
+    button:active{  /* 요소가 활성화 되었을 때 적용되는 css */
+        background-color: pink;
+        transform: translateY(5px);
+    }
+
+    input:focus{  /* 요소가 활성화 되었을 때 적용되는 css */
+        border: 2px solid pink;
+        outline: none;
+    }
+
+    /* a태그 css */
+
+    a:link{
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:visited{
+        color: pink;
+    }
+
+    /* transition 적용 (막대바) */
+    div{
+        width: 200px;
+        height: 50px;
+        color: white;
+        background-color: #666;
+        transition-property: width, background-color; /* 적용할 속성 기입 */
+        transition-duration: 1s; /* 적용되는 시간 */
+        transition-delay: 0.5s; /* 적용까지 걸리는 시간 */
+        transition-timing-function: ease-out; /* 적용속도 조정 ease, linear, step-start */
+    }
+
+    div:hover{
+        background-color: pink;
+        width: 510px;
+    }
+
+    /* 재롱이 사진 */
+    img{
+        display: inline;
+    }
+
+    #trans-late:hover{
+        transform: translate(10px, 10px);
+    }
+
+    #trans-x:active{
+        transform: translateX(10px);
+    }
+
+    #trans-y:active{
+        /* transform: translateY(10px); */
+        transform: perspective(500px) translateZ(50px); /* 원근 효과 */
+    }
+
+    #scale:active{
+        transform: scale(2); /* 확대 */
+    }
+
+    #skew:active{
+        transform: skew(5deg, 5deg); /* 늘리기 */
+    }
+
+    /* footer css */
+    footer{
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0px; /* 상+하, 좌+우 */
+    }
+</style>
+
+<body>
+    <!-- header -->
+    <header>
+        <h1>FlexBox, 가상클래스 선택자, Transition</h1>
+    </header>
+
+    <!-- navigation -->
+    <nav>
+        <ul>
+            <li><a href="">HOME</a></li>
+            <li><a href="">ABOUT</a></li>
+            <li><a href="">SERVICE</a></li>
+            <li><a href="">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- main -->
+    <main>
+        <!-- section -->
+        <section>
+            <h2>Thank you for visited!</h2>
+            <p>Enjoy!</p>
+
+            <input type="text">
+            <button>click</button>
+
+            <br><br>
+            <a href="https://www.naver.com" target="_blank"> > 네이버 < </a>
+
+            <br><br>
+            <div></div>
+            
+            <br><br>
+            <img id="trans-late" src="./organize/img/백재롱.webp" alt="백재롱" width="100px">
+            <img id="trans-x" src="./organize/img/백재롱.webp" alt="백재롱" width="100px">
+            <img id="trans-y" src="./organize/img/백재롱.webp" alt="백재롱" width="100px">
+            <img id="scale" src="./organize/img/백재롱.webp" alt="백재롱" width="100px">
+            <img id="skew" src="./organize/img/백재롱.webp" alt="백재롱" width="100px">
+
+            <br><br>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer>
+        <p>&copy; 2024 Example Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>
