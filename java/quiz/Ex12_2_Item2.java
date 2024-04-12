@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 public interface Ex12_2_Item2 {
 	

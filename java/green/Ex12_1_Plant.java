@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 public class Ex12_1_Plant extends Ex12_1_Organism {
 	

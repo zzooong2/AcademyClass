@@ -1,4 +1,4 @@
-package kr.co.game;
+package kr.co.java.game;
 
 public class Game_1_Archer extends Game_1_Character {
 

@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 public class Ex9_1_Parent {
 	

@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 // 사람의 설계도
 public class Ex5_3_Person {

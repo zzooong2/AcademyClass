@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 public class Ex1_Operator {
 

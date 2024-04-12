@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 public class Ex9_1_Student extends Ex9_1_Person {
 	

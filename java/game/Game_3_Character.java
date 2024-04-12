@@ -1,4 +1,4 @@
-package kr.co.game;
+package kr.co.java.game;
 
 public interface Game_3_Character {
 

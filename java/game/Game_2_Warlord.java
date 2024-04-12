@@ -1,4 +1,4 @@
-package kr.co.game;
+package kr.co.java.game;
 
 public class Game_2_Warlord extends Game_2_Character {
 

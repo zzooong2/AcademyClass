@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 // 추상메서드가 하나라도 선언되어있으면 추상클래스
 public abstract class Ex12_1_Organism {

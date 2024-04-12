@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 public class Ex4_Array {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 public class Ex3_For2 {
 	public static void main(String[] args) {

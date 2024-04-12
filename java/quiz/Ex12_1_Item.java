@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 public abstract class Ex12_1_Item {
 	

@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 public interface Problem_3_10_Car {
 	

@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 public class Problem_2_NoticeBoard implements Problem_2_Board {
 

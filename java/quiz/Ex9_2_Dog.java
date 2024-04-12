@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 public class Ex9_2_Dog extends Ex9_2_Animal{
 	

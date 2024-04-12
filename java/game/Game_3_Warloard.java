@@ -1,4 +1,4 @@
-package kr.co.game;
+package kr.co.java.game;
 
 public class Game_3_Warloard implements Game_3_Character {
 
@@ -11,7 +11,7 @@ public class Game_3_Warloard implements Game_3_Character {
 
 	// 캐릭터의 경험치가 100 이상이라면 레벨 +1, 경험치 0으로 초기화
 	public void checkExe() {
-		if (cAb.getExe() > 100) {
+		if (cAb.getExe() >= 100) {
 			cAb.setLevel(cAb.getLevel() + 1);
 			cAb.setExe(0);
 			// 레벨업 할 때마다 스텟 5가 생기고, 현재 레벨 확인 후 여유분의 스텟을 추가

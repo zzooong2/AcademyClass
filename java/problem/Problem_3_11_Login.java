@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 public class Problem_3_11_Login implements Problem_3_11_LoginInterface {
 

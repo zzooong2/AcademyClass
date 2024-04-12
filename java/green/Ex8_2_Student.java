@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 public class Ex8_2_Student {
 

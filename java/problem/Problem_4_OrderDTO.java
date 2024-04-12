@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 //1) OrderDTO 클래스를 생성하고 아래의 변수와 생성자, 메소드를 만드세요.
 //- private String customerName (주문자 이름)

@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 // StudentInterface 인터페이스 생성
 public interface Problem_1_Interface {

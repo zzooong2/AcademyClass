@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 import java.util.Scanner;
 

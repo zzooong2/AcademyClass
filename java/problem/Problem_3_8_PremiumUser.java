@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 // 프리미엄 사용자 클래스 (인터넷 사용자 클래스를 상속해야 함)
 

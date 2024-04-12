@@ -1,4 +1,4 @@
-package kr.co.problem;
+package kr.co.java.problem;
 
 // Ex_12_3_StudentInterface 구현
 public class Problem_1_Student implements Problem_1_Interface {

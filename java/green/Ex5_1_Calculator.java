@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 // 계산기 설계도(틀)
 public class Ex5_1_Calculator {

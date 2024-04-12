@@ -1,4 +1,4 @@
-package kr.co.green;
+package kr.co.java.green;
 
 public class Ex11_1_Cat extends Ex11_1_Animal {
 	@Override

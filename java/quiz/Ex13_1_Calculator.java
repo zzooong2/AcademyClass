@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

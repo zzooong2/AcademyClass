@@ -1,4 +1,4 @@
-package kr.co.quiz;
+package kr.co.java.quiz;
 
 public class Ex12_2_Pen2 implements Ex12_2_Item2 {
 

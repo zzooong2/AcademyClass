@@ -1,4 +1,4 @@
-package kr.co.game;
+package kr.co.java.game;
 
 import java.util.Scanner;
 
