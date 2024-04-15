@@ -1,0 +1,49 @@
+.container{
+    text-align: center;
+    width: 300px;
+}
+
+.animation{
+    border: none;
+    width: 80%;
+    height: 100px;
+    padding-top: 10%;
+    background-color: #999;
+    animation: move 3s both;
+}
+
+.sidebar{
+    border: none;
+    width: 50%;
+    height: 80px;
+    padding-top: 8%;
+    background-color: #666;
+    animation: move 3s both;
+}
+
+@media(max-width: 764px){
+    /* .animation p{
+        color: blue;
+        animation: move 3s 1;
+    } */
+    
+    .animation p{
+        color: white;
+    }
+    
+    .sidebar p{
+        color: white;
+    }
+    
+    @keyframes move{
+        0%{
+            transform: translateX(-200px);
+            opacity: 0;
+        }
+    
+        100%{
+            transform: translateX(100px);
+            opacity: 1;
+        }
+    }
+}
