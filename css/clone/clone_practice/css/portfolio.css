@@ -21,29 +21,21 @@
     animation: move 3s both;
 }
 
+@keyframes move{
+    0%{
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateX(100px);
+        opacity: 1;
+    }
+}
+
 @media(max-width: 764px){
-    /* .animation p{
-        color: blue;
-        animation: move 3s 1;
-    } */
-    
-    .animation p{
+    .container p{
         color: white;
     }
     
-    .sidebar p{
-        color: white;
-    }
-    
-    @keyframes move{
-        0%{
-            transform: translateX(-200px);
-            opacity: 0;
-        }
-    
-        100%{
-            transform: translateX(100px);
-            opacity: 1;
-        }
-    }
 }
