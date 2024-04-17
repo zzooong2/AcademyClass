@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box-class">Box1</div>
+    <div class="box-class">Box2</div>
+    <div class="box-class" name="box-name">Box3</div>
+    <div id="box-4" name="box-name">Box4</div>
+
+    <input type="text" placeholder="숫자 입력" id="input-number">
+    <button onclick="checkNumber()">전송</button>
+    <script>
+        function checkNumber(){
+            const inputNumber = document.getElementById("input-number");
+            console.log(inputNumber.value);
+        }
+        
+    </script>
+        
+    <script>
+        // id이용 HTML 요소 가져오기
+        const getBoxId = document.getElementById("box-4");
+        console.log(getBoxId);
+
+        console.log("----------------------------------");
+
+        // tag이용 HTML 요소 가져오기
+        const getBoxTag = document.getElementsByTagName("div");
+        console.log(getBoxTag);
+
+        console.log("----------------------------------");
+        
+        for(let i=0; i<getBoxTag.length; i++){
+            console.log(getBoxTag[i]);
+        }
+        
+        console.log("----------------------------------");
+        
+        // class이용 HTML 요소 가져오기
+        const getBoxClass = document.getElementsByClassName("box-class");
+        console.log(getBoxClass);
+        
+        console.log("----------------------------------");
+        
+        // name이용 HTML 요소 가져오기
+        const getBoxName = document.getElementsByName("box-name");
+        console.log(getBoxName);
+        
+        console.log("----------------------------------");
+        
+        // HTMLCollection: 값이 변경되면 업데이트 o (동적 컨텐츠)
+        // NodeList: 값이 변경되도 없데이트 x (정적 컨텐츠)
+        
+        //----------------------------------------------------------------
+        
+        // querySelector
+        const selectorClass = document.querySelector(".box-class");
+        console.log(selectorClass);
+        
+        // querySelectorAll
+        const selectorAllClass = document.querySelectorAll(".box-class")
+        console.log(selectorAllClass);
+        
+        console.log("----------------------------------");
+    </script>
+
+    <script>
+        // 데이터 출력
+        // 1. console.log();
+        console.log(getBoxId);
+        console.log(getBoxId + "문자 이어붙이기");
+        console.log(getBoxId.textContent + "textContent");
+        console.log(getBoxId.outerText + "outerText");
+        console.log(getBoxId.outerHTML + "outerHTML");
+        
+        console.log("----------------------------------");
+        
+
+        // 2. document.write();
+        document.write(getBoxId);
+        document.write("write 사용");
+
+
+        // 3.alert(); -> 팝업창
+        alert(getBoxId);
+
+        // 4.innerHTML = "";
+        getBoxId.innerHTML = "내용 변경";
+
+
+        // 데이터 입력
+        // 1. confirm
+        const question = confirm("진행 하시겠습니까?"); // 팝업창 나타나고 선택에 따라 true, false 반환
+        console.log(question);
+
+        // 2. prompt
+        const questionText = prompt("what's your name?"); // 팝업창 나타나고 기입한 내용 반환
+        console.log(questionText);
+
+    </script>
+</body>
+</html>

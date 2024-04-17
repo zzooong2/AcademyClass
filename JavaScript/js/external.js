@@ -1,0 +1,3 @@
+function externalClick(){
+    alert("external");
+}

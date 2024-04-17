@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- external -->
+    <script src="../js/external.js"></script>
+
+</head>
+<body>
+    <!-- inline -->
+    <button onclick="alert('inline')">Click !</button>
+
+    <!-- internal -->
+    <button onclick="internalClick()"> Click !! </button>
+
+    <!-- external -->
+    <button onclick="externalClick()">Click !!!</button>
+
+    <br><br><br>
+
+    <!-- variable -->
+    <script>
+    // 1. 중복선언
+    // var 가능 let, const 불가
+        var a = "var";
+        var b = "let";
+        var c = "const"
+
+        console.log(a)
+        console.log(b)
+        console.log(c)
+
+        var a = "var";
+        console.log(a)
+    </script>
+
+    <script>
+    // 2. 스코프
+    // 블록 스코프: 블록 내부에서 선언된 변수의 범위 (let, const)
+    // 함수 스코프: 함수 내부에서 선언된 변수의 범위 (var)
+
+        function example(){
+            var a2 = 10;
+            let b2 = 20;
+            const c2 = 30;
+            
+            if(true){
+                var a2 = 100;
+                let b2 = 200;
+                const c2 = 300;
+
+                                      // 100 200 300
+                console.log("if문 내부: ", a2, b2, c2);
+            }
+                                  // 100 20  30
+            console.log("if문 외부: ", a2, b2, c2);
+        }
+
+        example();        
+    </script>
+
+    <script>
+    // 3. 호이스팅: 인터프리터가 코드를 실행하기 전 함수, 변수, 클래스 또는 임포트의 선언문을 해당 범위의 맨 위로 끌어올리는 것처럼 보이는 현상
+
+        // JavaScript의 기본값인 undefined 출력
+        // 생성단계(변수선언) -> 실행단계(변수초기화)를 거치기 때문에 에러 발생 X
+        console.log(a3);
+        var a3 = "var";
+        console.log(a3);
+
+        // 생성단계(변수선언)만 거치기 때문에 Reference Error 발생
+        // ReferenceError: Cannot access 'b3' before initialization
+        console.log(b3);
+        let b3 = "let";
+        console.log(b3);
+    </script>
+
+    <script>
+    //4. const -> 상수
+        
+        const c3 = "const = 상수";
+        console.log(c3);
+
+        c3 = "값 변경";
+        console.log(c3)
+    </script>
+</body>
+</html>
+
+<!-- internal: body, html 태그가 끝나는 부분에 기재 -->
+<script>
+    function internalClick() {
+        alert('interanl');
+    }
+</script>

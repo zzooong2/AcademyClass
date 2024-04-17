@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <input type="text" id="second-number" placeholder="숫자 입력">
+        <input type="text" id="input-number" value="10" placeholder="숫자 입력">
+        <button onclick="add()">덧셈</button>
+        <div id="result-msg">0</div>
+        <div id="result">ㅋㅋㅋ</div>
+    </body>
+</html>
+
+<script>
+    function add(){
+        // parseInt: 정수로 형변환 해주는 함수
+        const firstNumber = parseInt(document.getElementById("input-number").value);
+        const secondNumber = parseInt(document.getElementById("second-number").value);
+        const resultMsg = document.getElementById("result-msg");
+        const result = document.getElementById("result");
+
+        if(firstNumber+secondNumber >= 50){
+            result.style.color = "green";
+            result.style.fontSize = "30px";
+            result.innerHTML = "50보다 크거나 같습니다."
+        } else {
+            result.style.color = "red";
+            result.style.fontSize = "30px";
+            result.innerHTML = "50보다 작습니다."
+        }
+
+        resultMsg.innerHTML = firstNumber + secondNumber;
+
+    }
+</script>
