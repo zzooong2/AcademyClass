@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 문자열을 다루는 함수 -->
+    <script>
+        let greeting = "Hello, World!";
+
+        // 1. toUpperCase(): 모두 대문자로 변경
+        console.log("toUpperCase(): " + greeting.toUpperCase());
+        console.log(" ");
+        
+        // 2. toLowerCase(): 모두 소문자로 변경
+        console.log("toLowerCase(): " + greeting.toLowerCase());
+        console.log(" ");
+        
+        // 3. length(): 문자열의 길이 반환
+        console.log("length: " + greeting.length);
+        console.log(" ");
+        
+        // 4. charAt(index): 문자열 중, index에 위치한 문자 반환
+        console.log("charAt(index): " + greeting.charAt(3));
+        
+        for(let i=0; i<greeting.length; i++){
+            console.log(i + "번째 index: " + greeting.charAt(i));
+        }
+        
+        console.log(" ");
+        
+        // 5. indexOf("문자"): 특정한 문자열의 인덱스를 반환
+        console.log("indexOf(d): " + greeting.indexOf("World"));
+        console.log(" ");
+        
+        // 6. lastIndexOf("문자"): 탐색하는 문자열이 마지막으로 등장하는 위치에 대한 인덱스를 반환
+        console.log("lastIndexOf(d): " + greeting.lastIndexOf("ld"));
+        console.log(" ");
+
+        // 7. substring(index): 설정한 인덱스에 위치한 문자 반환
+        console.log("substring(): " + greeting.substring(0, 5));
+        </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/array.js"></script>
+</head>
+<body>
+    <h3>배열 관련 내장함수</h3>
+    <ul>
+        <li>indexOf("값"): 값이 위치한 인덱스 반환, 없을경우 -1 반환</li>
+        <li>concat(배열, 배열, ...): 배열 합치기</li>
+        <li>reverse(): 배열의 값을 역순으로 재배치</li>
+        <li>sort(): 오름차순으로 정렬</li>
+        <li>push("값"): 배열의 맨 뒤에 요소 추가 -> 배열의 크기 반환 </li>
+        <li>unshift("값"): 배열의 맨 앞에 요소 추가 -> 배열의 크기 반환 </li>
+        <li>pop(): 배열의 맨 뒤 요소 삭제 -> 제거된 요소 반환</li>
+        <li>shift(): 배열의 맨 앞 요소 삭제 -> 제거된 요소 반환</li>
+        <li>slice(시작인덱스, 끝인덱스): 설정 인덱스에 위치한 요소 추출 </li>
+        <li>join(구분자): 구분자를 기준으로 요소를 합치기</li>
+    </ul>
+
+    <script>
+        let arr = ["A", "B", "C", "D"];
+
+        console.log(arr.indexOf("C")); // 2
+        console.log(arr.indexOf("ABCD")); // -1
+        console.log(arr.reverse()); // ["D", "C", "B", "A"]
+        console.log(arr.sort()); // ["A", "B", "C", "D"]
+        console.log(arr.push("E")); // 5
+        console.log(arr.pop()); // E
+        console.log(arr.unshift("1")); // 5
+        console.log(arr.shift()); // 1
+        console.log(arr.slice(1, 3)); // [B, C]
+        console.log(arr.join("-")); // A-B-C-D
+    </script>
+    <hr>
+
+    <button onclick="array()">배열 꺼내기</button>
+    <div id="array"></div>
+
+    <hr>
+
+    <button onclick="test()">배열 선언</button>
+    <div id="result"></div>
+
+    <hr>
+
+    <input type="text" id="menu" placeholder="점심 메뉴를 입력하시오.">
+    <button onclick="selectMenu()">제출</button>
+    <div id="lunch"></div>
+
+    <hr>
+</body>
+</html>
