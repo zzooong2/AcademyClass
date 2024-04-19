@@ -2,6 +2,12 @@ function welcome(){
     alert(document.getElementById("alias").value + "님 환영합니다!");
 }
 
+// welcome() 익명함수로 전환
+const anonymousWelcome = function(){
+    alert(document.getElementById("alias").value + "님 환영합니다!");
+}
+
+
 function gugudan() {
     const number = document.getElementById("gugudan");
     const inputNumber = document.getElementById("input-gugudan").value;
