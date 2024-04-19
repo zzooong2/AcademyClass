@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <script src="../js/event.js"></script> -->
+
+</head>
+<body>
+    <!-- eventhandler, addEventListener -->
+    <button onclick="handler1()">event handler 1</button>
+    <p id="result-1"></p>
+    
+    <hr>
+    
+    <button id="btn-2">event handler 2</button>
+    <p id="result-2"></p>
+    
+    <hr>
+    
+    <button id="btn-3">event listener</button>
+    <p id="result-3"></p>
+
+    <hr>
+
+    <!-- mouse event -->
+    <button id="btn-4">dblclick</button>
+    <p id="result-4"></p>
+
+    <hr>
+    
+    <button id="btn-5">mouseover</button>
+    <p id="result-5"></p>
+
+    <hr>
+
+    <div style="border: 1px solid black; width: 200px; height: 200px;" id="div-area"></div>
+
+    <hr>
+
+    <!-- keyboard event -->
+    <input type="text" id="keyboard" maxlength="10">
+    <button id="btn-6">입력</button>
+    <p id="result-6"></p>
+
+    <hr>
+
+    <input type="password" id="input-password" placeholder="PW" onkeyup="validatePassword(this.value)"/>
+    <div id="result-7"></div>
+
+</body>
+</html>
+
+<script src="../js/event.js"></script>
