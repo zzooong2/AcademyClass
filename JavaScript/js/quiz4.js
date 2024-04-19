@@ -10,7 +10,8 @@ function getLength(){
     const inputText = document.getElementById("input-text").value;
     const show = document.getElementById("length");
     
-    show.innerHTML = Object.keys(inputText).length;
+    show.innerHTML = inputText.length;
+    // show.innerHTML = Object.keys(inputText).length;
 }
 
 function getSum(){
@@ -27,16 +28,18 @@ function getMin(){
     const getNum2 = document.getElementById("get-num2").value;
     const show = document.getElementById("min");
 
-    const arr = [getNum1, getNum2];
-    let min = 100;
+    // const arr = [getNum1, getNum2];
+    // let min = 100;
 
-    for(let i=0; i<arr.length; i++){
-        if(min > arr[i]) {
-            min = arr[i];
-        }
-    }
+    // for(let i=0; i<arr.length; i++){
+    //     if(min > arr[i]) {
+    //         min = arr[i];
+    //     }
+    // }
 
-    show.innerHTML = min;
+    // show.innerHTML = min;
+    
+    show.innerHTML = Math.min(getNum1, getNum2);
 }
 
 function upper(){
@@ -85,7 +88,6 @@ function checking(){
     const checkingNumber1 = document.getElementById("checking1").value;
     const checkingNumber2 = document.getElementById("checking2").value;
     const checkingNumber3 = document.getElementById("checking3").value;
-    const show = document.getElementById("checking");
 
     checkingArray = [checkingNumber1, checkingNumber2, checkingNumber3];
 
@@ -95,5 +97,7 @@ function checking(){
             maxObject = checkingArray[i];
         }
     }
-    show.innerHTML = maxObject;
+    alert(maxObject);
+
+    // alert(Math.max(checkingNumber1, checkingNumber2, checkingNumber3));
 }
