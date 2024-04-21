@@ -35,7 +35,9 @@ function check(){
         show.innerHTML = "축하합니다! " + cnt + "번째 시도에 숫자를 맞추셨습니다!";
         show.style.fontSize = "14px";
         show.style.color = "green";
-        replay.style.display = "inline-block";
+        guessInput.disabled = "disabled"; // input 공간에 값 입력 못하게 처리
+        submitGuess.disabled = "disabled"; // button 눌리지 않게 처리
+        replay.style.display = "inline-block"; // 다시하기 버튼 보이게 처리
     } else if (inputValue < randomNumber) {
         // "숫자가 너무 작습니다. 다시 시도하세요"
         show.innerHTML = "숫자가 너무 작습니다. 다시 시도하세요";
