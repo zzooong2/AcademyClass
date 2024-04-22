@@ -19,6 +19,8 @@ function idCondition() {
 function pwCondition() {
     const inputPassword = document.getElementById("password").value; // input
     const passwordMsg = document.getElementById("password-msg"); // span
+    const inputCheckedPassword = document.getElementById("password-check").value; // input
+    const checkedPasswordMsg = document.getElementById("password-check-msg"); // span 
     
     const pwPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{6,20}$/; // 조건
     // ^ : 문자의 시작
@@ -34,15 +36,7 @@ function pwCondition() {
         passwordMsg.style.color = "red";
     }
     
-}
-
-
-// 비밀번호 확인
-function checkPassword() {
-    const inputPassword = document.getElementById("password").value; // input
-    const inputCheckedPassword = document.getElementById("password-check").value; // input
-    const checkedPasswordMsg = document.getElementById("password-check-msg"); // span 
-    
+    // 비밀번호 확인
     if(inputPassword === inputCheckedPassword) {
         checkedPasswordMsg.innerHTML = "비밀번호가 동일합니다.";
         checkedPasswordMsg.style.color = "green";
@@ -50,39 +44,27 @@ function checkPassword() {
         checkedPasswordMsg.innerHTML = "비밀번호가 상이합니다.";
         checkedPasswordMsg.style.color = "red";
     }
-
+    
+    
 }
 
 
+// 아래처럼 로직을 작성하게 되면 비밀번호, 비밀번호 확인 작성 후 비밀번호 수정시 비교 반영 안됌
+// 비밀번호 확인
+// function checkPassword() {
+//     const inputPassword = document.getElementById("password").value; // input
+//     const inputCheckedPassword = document.getElementById("password-check").value; // input
+//     const checkedPasswordMsg = document.getElementById("password-check-msg"); // span 
+    
+//     if(inputPassword === inputCheckedPassword) {
+//         checkedPasswordMsg.innerHTML = "비밀번호가 동일합니다.";
+//         checkedPasswordMsg.style.color = "green";
+//     } else {
+//         checkedPasswordMsg.innerHTML = "비밀번호가 상이합니다.";
+//         checkedPasswordMsg.style.color = "red";
+//     }
+
+// }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const pwPattern2 = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/; // 특수문자 최소 1개 이상
-// const pwPattern3 = /{6,12}/; // 6글자 이상, 12글자 이하
