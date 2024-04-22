@@ -21,6 +21,10 @@ function pwCondition() {
     const passwordMsg = document.getElementById("password-msg"); // span
     
     const pwPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{6,20}$/; // 조건
+    // ^ : 문자의 시작
+    // ?= : 전방 탐색
+    // .* : 문자 하나가 있거나, 없거나 (0번 이상)
+    // [a-zA-Z] : 알파벳 소문자 또는 대문자
     
     if(pwPattern.test(inputPassword)){
         passwordMsg.innerHTML = "사용 가능한 패스워드입니다.";
