@@ -52,21 +52,42 @@ function createEle() {
     show.appendChild(img)
 }
 
-let cnt = 0;
+let cnt = 0; // 버튼 누르는 횟수
 
 function createEle2(){
-    cnt ++;
-    const show = document.getElementById("create2");
-    const show2 = document.getElementById("yoso");
+    cnt ++; // 횟수 증가
+    const show = document.getElementById("yoso");
     const elementNode = document.createElement("p");
     const textNode = document.createTextNode("안녕하세요" + cnt);
 
     elementNode.style.color = "blue";
-    elementNode.style.fontSize = "16px";
+    elementNode.style.fontSize = "16";
 
     elementNode.appendChild(textNode);
     
     show.appendChild(elementNode);
+}
 
-    show2.appendChild(show);
+function createEle3() {
+    const show = document.getElementById("ul-space"); // ul
+    const elementNode = document.createElement("li"); // 요소노드 생성 : li
+    const menu = document.getElementById("menu"); // input 
+    const textNode = document.createTextNode(menu.value); // 텍스트노드 생성 : input value
+
+    
+    elementNode.appendChild(textNode);
+    show.appendChild(elementNode);
+
+    menu.innerHTML = "";
+
+    // 삭제 버튼 생성
+    const deleteBtn = document.createElement("button"); // 요소노드 생성 : button
+    deleteBtn.innerHTML = "삭제"; // 텍스트노드 생성 : delete
+
+    show.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener('click', function(){
+        // removeChild : 자식 요소 삭제
+        elementNode.removeChild(textNode);
+    })
 }
