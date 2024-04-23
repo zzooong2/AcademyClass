@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>window: 자바 스크립트 최상위 객체</h2>
+    <ol>
+        <li>BOM(Browser Object Model): 브라우저의 주소창과 관련</li>
+        <li>DOB(Document Object Model): BOM 제외 나머지 (html 요소 등)</li>
+    </ol>
+
+    <hr>
+
+    <h3>window.open(): 브라우저의 새로운 탭(창)을 생성</h3>
+    <button onclick="windowTest()">실행</button>
+
+    <hr>
+
+    <h3>About Timer</h3>
+    <ol>
+        <li>setTimeout: 설정한 시간이 지난 후 로직 실행됨(비동기)</li>
+        <li>setInterval: 설정한 시간마다 로직이 실행됨</li>
+    </ol>
+    <button onclick="windowTest2()">setTimeout</button>
+    <button onclick="windowTest3()">setInterval</button>
+    <div id="test-3"></div>
+
+    <hr>
+
+    <h3>BOM(Browser Object Model)</h3>
+    <ol>
+        <li>location 객체</li>
+        <li>screen 객체</li>
+        <li>navigator 객체</li>
+        <li>history 객체</li>
+    </ol>
+
+    <span onclick="location.href='https://www.naver.com'">>span< (클릭시 페이지이동)</span>
+    <br>
+    <button onclick="location.href='https://www.naver.com'">href</button>
+    <button onclick="location.assign('https://www.naver.com')">assign</button>
+    <!-- replace: 뒤로가기 없는 새 창 -->
+    <button onclick="location.replace('https://www.naver.com')">replace</button>
+    <br>
+    <button onclick="console.log(screen)">screen</button>
+    <button onclick="console.log(navigator)">navigator</button>
+    <button onclick="console.log(history)">history</button>
+    
+    <hr>
+
+    <h3>DOB(Document Object Model)</h3>
+    <p>
+        노드(Node): HTML에 있는 각각의 태그
+        <br>
+            &nbsp;&nbsp;- 요소(Element) 노드: 태그 그 자체를 의미
+            <br>
+            &nbsp;&nbsp;- 텍스트(Text) 노드: 태그 내부의 텍스트를 의미
+            <br>
+            <br>
+            &nbsp;&nbsp;- 텍스트(Text) 노드가 존재하는 요소: 시작, 종료 태그 사이에 문자열을 기입할 수 있는 태그
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;(p, div, a, p, pre, span, h1~ ...)
+            <br>
+            &nbsp;&nbsp;- 텍스트(Text) 노드가 존재하지 않는 요소: 시작, 종료 태그 사이에 문자열을 기입하지 않는 태그
+            <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;(img, input, br, hr ...)
+    </p>
+
+    <button onclick="createEle()">요소 생성</button>
+    <div id="create"></div>
+    <hr>
+    
+    <!-- 
+        버튼을 클릭할 때 마다 span의 자식요소로 "안녕하세요"+숫자 생성
+            -> p태그
+            -> 색상은 blue
+            -> 폰트사이즈는 16px
+        ex) 안녕하세요1, 안녕하세요2, 안녕하세요3, 안녕하세요4, ...
+    -->
+    <button onclick="createEle2()">요소 생성</button>
+    <div id="create2"></div>
+        <span id="yoso">
+
+        </span>
+    <hr>
+</body>
+</html>
+
+<script src="../js/window.js"></script>
