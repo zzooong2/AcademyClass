@@ -99,21 +99,24 @@ function Q5() {
     const inputAge = document.getElementById("age").value; // age value
     const inputGender = document.getElementById("gender").value; // gender value
 
-    const tableBody = document.getElementById("insert"); // tr
-    const createTd = document.createElement("td"); // td 노드요소 생성
+    const tbody = document.getElementById("insert"); // tbody
+    const trTag = document.createElement("tr"); // tr 노드요소 생성
+    const createTdName = document.createElement("td"); // td-name 노드요소 생성
+    const createTdAge = document.createElement("td"); // td-age 노드요소 생성
+    const createTdGender = document.createElement("td"); // td-gender 노드요소 생성
 
     const createName = document.createTextNode(inputName);
     const createAge = document.createTextNode(inputAge);
     const createGender = document.createTextNode(inputGender);
 
     // td 노드 생성 후 input에 기입한 값 기입
-    createTd.appendChild(createName);
-    console.log(createTd);
-    createTd.appendChild(createAge);
-    console.log(createTd);
-    createTd.appendChild(createGender);
-    console.log(createTd);
-    
+    createTdName.appendChild(createName);
+    createTdAge.appendChild(createAge);
+    createTdGender.appendChild(createGender);
 
+    trTag.appendChild(createTdName);
+    trTag.appendChild(createTdAge);
+    trTag.appendChild(createTdGender);
 
+    tbody.appendChild(trTag);
 }
