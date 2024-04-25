@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+
+    <!-- <CDN 링크> https://developers.google.com/ -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- <CDN 다운로드> https://jquery.com/ -->
+    <!-- 다운받은 파일의 코드를 .js 파일로 작성하여 src 위치 조정해주기  -->
+</head>
+<body>
+    <!-- 
+        <jQuery>
+        1. JavaScript의 라이브러리 (언어 X)
+        2. JavaScript의 문법 간소화 및 기능추가
+        
+        [장점]
+        1. DOM(Document Obejct Model) 요소 관련 로직을 JavaScript보다 쉽게 구현
+        2. ajax(비동기 통신), 이벤트 등 다양한 기능 지원
+        3. 플러그인, 오픈 API등을 지원(차트, 슬라이드 ...)
+    -->
+
+
+<script>
+    // JavaScript 방식
+    /* 
+    // load(): DOM tree + css, img ...
+    window.onload = function() {
+        const testSpan = document.getElementById("text-span");
+        testSpan.innerHTML = "내용변경";
+    }
+
+    // DOMContentLoaded():  DOM tree
+    document.addEventListener("DOMContentLoaded", function() {
+        const testSpan = document.getElementById("text-span");
+        testSpan.innerHTML = "내용변경";
+    })
+    */
+
+    // jQuery($) 방식
+    /*
+
+    // 준비가 될 때 까지 기다렸다가 함수 실행
+    // 아래 로직은 모두 동일함 (더 짧게 쓰기 위함임)
+
+    jQuery(document).ready(function() {
+        // 실행할 코드
+    })
+
+    $(document).ready(function(){
+        // 실행할 코드
+    })
+
+    $(function() {
+        // 실행할 코드
+    })
+
+    */
+
+    $(function() {
+        // const testSpan = document.getElementById("text-span");
+        const testSpan = $("#text-span");
+        
+        // testSpan.innerHTML = "내용변경";
+        testSpan.html("변경됨");
+    })
+    </script>
+    <span id="text-span">Hello, jQuery!</span>
+
+
+    <p class="text-color-green">Text1</p>
+    <p class="text-color-green">Text2</p>
+    <p class="text-color-green">Text3</p>
+
+    <hr>
+
+    <div>
+        <ul>
+            <li>리스트1</li>
+            <li>리스트2</li>
+            <li class="div-list">리스트3</li>
+            <li class="div-list">리스트4</li>
+            <li>
+                <h3>후손 리스트</h3>
+            </li>
+
+            <h3> 자식 리스트</h3>
+        </ul>
+    </div>
+
+    <hr>
+
+    <input type="text"> <br>
+    <input type="checkbox"> <br>
+    <input type="button">
+</body>
+</html>
+
+<script src="../js/jQuery.js"></script>

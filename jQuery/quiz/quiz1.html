@@ -1,0 +1,155 @@
+<!-- JavaScript => jQuery 변경해보기 -->
+
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h3>Q1. 사용자의 이름을 입력받고, 확인 버튼을 누르면 "OOO님 환영합니다"를 alert으로 출력하세요.</h3>
+    <!-- input, button  / prompt  -->
+    <input type="text" id="q1-name">
+    <button onclick="q1Func()">확인</button>
+    <script>
+        // // 1. prompt
+        // const q1Name = prompt("이름을 입력하세요.");
+        // alert(q1Name + "님 환영합니다.");
+
+        // 2. input, button
+        function q1Func() {
+            // const name = document.getElementById("q1-name").value;
+            const name = $("#q1-name").val();
+            alert(name + "님 환영합니다.");
+        }
+
+    </script>
+    <hr>
+
+    <h3>Q2. 몇단을 출력할지 입력받고, 확인 버튼을 누르면 innerHTML을 활용해 구구단의 합계를 div 태그에 출력하세요.</h3>
+    <input type="text" id="input-gugudan">
+    <button onclick="gugudan()">확인</button>
+    <div id="gugudan"></div>
+
+    <script>
+        function gugudan() {
+            // 사용자가 입력한 단 가져오기
+            // const inputDan = document.getElementById("input-gugudan").value;
+            const inputDan = $("#input-gugudan").val();
+            // const gugudan = document.getElementById("gugudan");
+            const gugudan = $("#gugudan");
+
+            // 입력한 구구단의 합계 (ex. 3단이 들어왔다 -> 3*1 ~ 3*9까지 다 더한 값)
+            let sum = 0;
+
+            for(let i=1; i<10; i++) {
+                sum = sum+(inputDan*i);
+            }
+
+            // div에 합계값 출력
+            // gugudan.innerHTML = sum;
+            gugudan.html(sum);
+        }
+    </script>
+    <hr>
+
+    <h3>Q3. 사용자의 이름과 나이를 출력입력 받고, 확인 버튼을 누르면
+        innerHTML을 활용해 div 태그에 환영 메시지를 출력하세요.</h3>
+    <p>18세 미만 : "OOO님, 안녕하세요! 미성년자 분이시군요."</p>
+    <p>18세 이상 : "OOO님, 안녕하세요! 성인 분이시군요."</p>
+    <p style="color: red;">※ 단, 나이에 숫자를 입력하지 않을 경우 "나이를 유효한 숫자로 입력하세요." 출력</p>
+    <p style="color: red;">※ isNaN(나이)을 활용하여 숫자인지 확인할 수 있습니다.</p>
+    <input type="text" id="q3-name" value="">
+    <input type="text" id="q3-age">
+    <button onclick="ageCheck()">확인</button>
+    <div id="welcome"></div>
+
+    <script>
+        function ageCheck() {
+            // const name = document.getElementById("q3-name").value;
+            const name = $("#q3-name").val();
+            // const age = document.getElementById("q3-age").value;
+            const age = $("#q3-age").val();
+            // const welcome = document.getElementById("welcome");
+            const welcome = $("#welcome");
+
+            // 문자면 true, 숫자면 false
+            console.log(isNaN(age));
+
+            if(!isNaN(age)) {
+                if(age >= 18) {
+                    // welcome.innerHTML = name + "님, 안녕하세요! 성인 분이시군요.";
+                    welcome.html(name + "님, 안녕하세요! 성인 분이시군요.")
+                } else if(age < 18) {
+                    // welcome.innerHTML = name + "님, 안녕하세요! 미성년자 분이시군요.";
+                    welcome.html(name + "님, 안녕하세요! 미성년자 분이시군요.")
+                }
+            } else {
+                // welcome.innerHTML = "나이를 유효한 숫자로 입력하세요.";
+                welcome.html("나이를 유효한 숫자로 입력하세요.")
+            }
+        }
+    </script>
+    <hr>
+    
+    <h3>Q4. 사용자로부터 숫자를 하나 입력받아 확인 버튼을 누르면
+        홀수인지 짝수인지 판별하고, inerrHTML을 활용해 div 태그에 출력하세요.
+    </h3>
+    <input type="text" id="q4-number">
+    <button onclick="numberCheck()">확인</button>
+    <div id="number"></div>
+    <p>출력 : 입력한 숫자는 짝수입니다.</p>
+    <p>출력 : 입력한 숫자는 홀수입니다.</p>
+    <p style="color: red;">※ 홀수는 빨간색, 짝수는 파란색으로 출력</p>
+
+    <script>
+        function numberCheck() {
+            // const inputNumber = document.getElementById("q4-number");
+            const inputNumber = $("#q4-number").val();
+            // const resultMsg = document.getElementById("number");
+            const resultMsg = $("#nubmer");
+
+            if(inputNumber%2 == 0) {
+                // resultMsg.innerHTML = "<p>입력한 숫자는 짝수입니다.</p>";
+                resultMsg.html("입력한 숫자는 짝수입니다.");
+                // resultMsg.style.color = "blue";
+                resultMsg.css("color", "blue")
+            } else {
+                // resultMsg.innerHTML = "입력한 숫자는 홀수입니다.";
+                resultMsg.html("입력한 숫자는 홀수입니다.");
+                // resultMsg.style.color = "red";
+                resultMsg.css("color", "red");
+            }
+        }
+    </script>
+    <hr>
+
+    // Q1. 입력 받은 값이 0 또는 12 이상일 경우, 
+    //      “값이 너무 크거나 작습니다.”를 출력 하시오.
+    <input type="text" id="q5-num">
+    <button onclick="q5Num()">확인</button>
+    <div id="q5-result"></div>
+    <script>
+        const globalVar = "asd";
+
+        function q5Num() {
+            // const num = document.getElementById("q5-num").value;
+            const num = $("#q5-num").val();
+            // const result = document.getElementById("q5-result");
+            const result = $("#q5-result");
+
+            console.log(result);
+            if(num == 0 || num >= 12) {
+                result.innerHTML = "값이 너무 크거나 작습니다.";
+            }
+        }
+        
+    </script>
+
+    <br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
