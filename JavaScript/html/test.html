@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 문제 1: 주어진 숫자 배열에서 10보다 큰 수만을 찾아 그 합계를 반환하는 함수를 작성하세요.
+        const numbers = [1, 12, 5, 3, 18, 13];
+        let count = 0;
+
+        for(let i=0; i<numbers.length; i++){
+            if(numbers[i] > 10){
+                count += numbers[i];
+            }
+        }
+        console.log(count);
+    </script>
+
+    <!-- 
+        문제 2: 버튼을 클릭할 때 마다 span의 텍스트가 1씩 증가하는 코드를 작성하세요.
+    -->
+    <button onclick="add()">증가</button>
+    <span id="show-number">0</span>
+    <script>
+        let number = 0;
+
+        function add() {
+            const showNumber = document.getElementById("show-number");
+            number += 1; 
+            showNumber.innerText = number;
+        }
+    </script>
+
+    <!-- 
+        문제 3 : input에 입력 후 버튼을 클릭할 때 입력한 값에 따라 div 요소에 색상을 적용하세요.
+        - r 입력 시 : div 요소를 red 색상으로 변경
+        - b 입력 시 : div 요소를 blue 색상으로 변경
+        - g 입력 시 : div 요소를 green 색상으로 변경
+
+        * 변경된 색상의 기록을 ul요소 안에 리스트로 기록해야 합니다.
+            - 색상이 변경될 때 마다 ul의 자식요소로 li 태그가 생성 됩니다.
+            - li 태그는 변경된 색상을 출력합니다. (ex. red, blue, green)
+    -->
+    <input type="text" placeholder="색상을 입력하세요." id="color">
+    <button onclick="change()">변경</button>
+    <div style="width:200px; height: 200px; background-color: antiquewhite;" id="space"> </div>
+
+    <ul id="parent"></ul>
+
+    <script>
+        function change() {
+            const inputColor = document.getElementById("color").value; // input color
+            const space = document.getElementById("space"); // div
+            
+            const parentNode = document.getElementById("parent"); // ul
+            const createNd = document.createElement("li"); // li 태그 생성
+            const createTxRed = document.createTextNode("red"); // red 텍스트 생성
+            const createTxBlue = document.createTextNode("blue"); // blue 텍스트 생성
+            const createTxGreen = document.createTextNode("green"); // green 텍스트 생성
+            
+            if(inputColor == "r") {
+                space.style.backgroundColor = "red";
+                createNd.appendChild(createTxRed);
+                parentNode.appendChild(createNd);
+            } else if (inputColor == "b") {
+                space.style.backgroundColor = "blue";
+                createNd.appendChild(createTxBlue);
+                parentNode.appendChild(createNd);
+            } else if (inputColor == "g") {
+                space.style.backgroundColor = "green";
+                createNd.appendChild(createTxGreen);
+                parentNode.appendChild(createNd);
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
