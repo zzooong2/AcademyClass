@@ -1,0 +1,71 @@
+--트랜잭션: SELECT, INSERT, UPDATE, DELETE와 같이 DML연산을 수행하여 데이터베이스의 사애를 변화시키는 작업의 단위
+--ACID : Atomicity(원자성), Consistency(일관성), Isolation(독립성), Durability(지속성)
+
+INSERT INTO DDL_JOBS dj values(3, '김현중', 1);
+
+UPDATE DDL_JOBS SET JOB_NAME = '요리사' WHERE JOB_CODE = 3;
+UPDATE DDL_JOBS SET JOB_NAME = '가수' WHERE JOB_CODE = 3;
+
+
+--COMMIT: 모든 작업을 성공적으로 완료하여 변경된 내용을 데이터베이스에 반영하는 작업
+COMMIT;
+
+--ROLLBACK: 마지막 COMMIT 시점으로 원복
+--DDL_JOBS 테이블 데이터 삭제 후 원복
+DELETE FROM DDL_JOBS dj;
+
+SELECT * FROM DDL_JOBS dj;
+
+ROLLBACK;
+
+--DDL_JOBS 테이블의 데이터 수정 후 원복(COMMIT 이후에는 롤백 불가)
+UPDATE DDL_JOBS SET JOB_NAME = '롤백 테스트중' WHERE JOB_CODE = 3;
+COMMIT;
+
+ROLLBACK;
+
+--SAVEPOINT: 세이브포인트를 만들어 롤백 시 지정한 세이브포인트로 원복
+--직무 추가
+INSERT INTO DDL_JOBS dj values(7, '선생님', 2);
+SAVEPOINT sp1;
+
+UPDATE DDL_JOBS SET JOB_NAME = '변경' WHERE JOB_CODE = 3;
+SAVEPOINT sp2;
+
+SELECT * FROM DDL_JOBS dj;
+ROLLBACK TO sp1;
+
+
+------------------------------------------------------------------------------------
+
+--연습예제
+
+--테이블 생성
+CREATE TABLE ACCOUNTS (
+	ACCOUNT_ID NUMBER PRIMARY KEY,
+	ACCOUNT_NAME VARCHAR2(255),
+	BALANCE NUMBER
+);
+
+SELECT * FROM ACCOUNTS;
+
+ALTER TABLE ACCOUNTS RENAME COLUMN BALACNE TO BALANCE
+
+--데이터 삽입
+INSERT INTO ACCOUNTS VALUES (1, 'ALICE', 10000);
+INSERT INTO ACCOUNTS VALUES (2, 'BOB', 15000);
+INSERT INTO ACCOUNTS VALUES (3, 'CHARLIE', 20000);
+
+--1. Alice 계좌에서 Bob 계좌로 5000원을 이체합니다.
+UPDATE ACCOUNTS SET BALANCE = BALANCE-5000 WHERE ACCOUNT_NAME = 'ALICE';
+UPDATE ACCOUNTS SET BALANCE = BALANCE+5000 WHERE ACCOUNT_NAME = 'BOB';
+
+--2. SAVEPOINT 생성
+SAVEPOINT SP1;
+
+--3. Charlie 계좌에서 10000원 출금하고 ROLLBACK을 사용하여 출금을 취소(SAVEPOINT 이용)
+UPDATE ACCOUNTS SET BALANCE = BALANCE-10000 WHERE ACCOUNT_NAME = 'CHARLIE';
+ROLLBACK TO SP1;
+
+--4. COMMIT을 사용하여 데이터베이스에 반영하세요.
+COMMIT;
