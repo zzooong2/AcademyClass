@@ -26,7 +26,7 @@ public class MemberDAO {
 		String query = "INSERT INTO member VALUES(member_seq.nextval,?,?,?,default)";
 		int result = 0;
 		
-		// .prepareStatement: 예외처리 필수
+		// .prepareStatement: 예외처리 필수, SQL 인젝션 방어하기 위한 방안이기도함
 		try {
 			// .Statement: 쿼리를 실행하는 객체 (실행할 때마다 모든 단계를 거침)
 			// .prepareStatement: 쿼리문에 ? 삽입하여 원하는 값을 저장할 수 있음 (캐시에 담아뒀다가 재사용)
