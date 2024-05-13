@@ -36,7 +36,8 @@ public class FreeDAO {
 					 + " m.m_name,\n"
 					 + " ROW_NUMBER() OVER(ORDER BY fb.fb_indate DESC) AS row_num \n"
 					 + " FROM FREE_BOARD fb\n"
-					 + " JOIN \"MEMBER\" m ON m.M_NO = fb.M_NO)\n"
+					 + " JOIN \"MEMBER\" m ON m.M_NO = fb.M_NO"
+					 + " WHERE FB_DELETE_STATUS = 'N')\n"
 					 + " WHERE row_num > ? AND row_num <= ?"; 
 		
 		try {
@@ -81,9 +82,10 @@ public class FreeDAO {
 		return result;
 	}
 	
+	
 	// 게시글 수량 조회
 	public int getListCount() {
-		String query = "SELECT COUNT(*) AS cnt FROM FREE_BOARD";
+		String query = "SELECT COUNT(*) AS cnt FROM FREE_BOARD WHERE FB_DELETE_STATUS = 'N'";
 		
 		try {
 			// 쿼리 실행 준비
@@ -105,6 +107,7 @@ public class FreeDAO {
 		// try 문에서 오류가 발생되지 않는다면 while 문 안에 있는 return 문장에서 메서드 종료
 		return 0;
 	}
+	
 	
 	// 게시글 등록
 	public int enroll(BoardDTO boardDTO) {
@@ -128,4 +131,133 @@ public class FreeDAO {
 		return result;
 	}
 	
+	
+	// 게시글 상세조회
+	public FreeDTOImpl getDetail(int boardNo) {
+		String query = "SELECT * FROM FREE_BOARD WHERE FB_NO = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, boardNo);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				// SQL문 실행결과(튜플)에 있는 컬럼의 값 꺼내기
+				int fbNo = rs.getInt("FB_NO");
+				String fbTitle = rs.getString("FB_TITLE");
+				String fbContent = rs.getString("FB_CONTENT");
+				String fbIndate = rs.getString("FB_INDATE");
+				int fbViews = rs.getInt("FB_VIEWS");
+				int mNo = rs.getInt("M_NO");
+				
+				FreeDTOImpl freeDTO = new FreeDTOImpl();
+				
+				freeDTO.setBoardNo(fbNo);
+				freeDTO.setBoardTitle(fbTitle);
+				freeDTO.setBoardContent(fbContent);
+				freeDTO.setBoardIndate(fbIndate);
+				freeDTO.setBoardViews(fbViews);
+				freeDTO.setMemberNo(mNo);
+				
+				return freeDTO;
+				
+			}
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	// 작성자 조회
+	public void getWriter(FreeDTOImpl freeDTO) {
+		String query = "SELECT M_NAME FROM MEMBER WHERE M_NO = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, freeDTO.getMemberNo());
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				String mName = rs.getString("M_NAME");
+				
+				freeDTO.setMemberName(mName);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	// 조회수 1증가
+	public int setViews(int boardNo) {
+		String query = "UPDATE FREE_BOARD "
+					+  " SET FB_VIEWS = FB_VIEWS+1 "
+					+  " WHERE FB_NO = ?"; 
+		int result = 0;
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+			return result;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	// 게시글 수정
+	public int setEdit(FreeDTOImpl freeDTO) {
+		String query = "UPDATE FREE_BOARD SET FB_TITLE = ?, FB_CONTENT = ?, FB_UPDATE = SYSDATE"
+					+  " WHERE FB_NO = ?";
+		int result = 0;
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, freeDTO.getBoardTitle());
+			pstmt.setString(2, freeDTO.getBoardContent());
+			pstmt.setInt(3, freeDTO.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+			
+			pstmt.close();
+			con.close();
+			
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	// 게시글 삭제
+	public int delete(FreeDTOImpl freeDTO) {
+		String query = "UPDATE FREE_BOARD SET FB_DELETE = SYSDATE, FB_DELETE_STATUS = 'Y'"
+					 + " WHERE FB_NO = ?";
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, freeDTO.getBoardNo());
+			int result = pstmt.executeUpdate(); 
+			pstmt.close();
+			con.close();
+			return result;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
