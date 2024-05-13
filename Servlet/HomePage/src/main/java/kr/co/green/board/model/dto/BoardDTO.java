@@ -76,5 +76,16 @@ public class BoardDTO {
 		this.memberName = memberName;
 	}
 	
+	// toString (개발할 때 확인용으로 사용하고 개발 완료 후에는 필히 삭제 - 정보은닉에 위배되기 때문)
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
+				+ ", boardViews=" + boardViews + ", boardIndate=" + boardIndate + ", boardUpdate=" + boardUpdate
+				+ ", boardDelete=" + boardDelete + ", boardDeleteStatus=" + boardDeleteStatus + ", memberNo=" + memberNo
+				+ ", memberName=" + memberName + "]";
+	}
+	
+	
+	
 	
 }
