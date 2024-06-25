@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace: FreeDao 파일의 22번줄에 기재한 freeMapper -->
+<mapper namespace="freeMapper">
+
+	<!-- resultMap-id: 쿼리문(select) 태그에 선언한 resultMap과 일치시킴 -->
+	<!-- resultMap-type: mybatis-config.xml 파일의 11번째 줄에 선언한 alias와 일치시킴 -->
+	<resultMap type="free" id="freeResultSet">
+		<!-- column: 쿼리에서 가져오고자하는 컬럼명 -->
+		<!-- property: DTO 파일에 선언한 변수명와 일치시킴 -->
+		<result column="fb_no" property="boardNo"></result>
+		<result column="fb_title" property="boardTitle"></result>
+		<result column="fb_content" property="boardContent"></result>
+		<result column="fb_indate" property="boardIndate"></result>
+		<result column="fb_views" property="boardViews"></result>
+		<result column="m_name" property="memberName"></result>
+		<result column="m_no" property="memberNo"></result>
+	</resultMap>
+	
+	<!-- id: FreeDao 파일의 22번줄에 기재한 getList -->
+	<!-- resultMap: resultMap 태그의 id와 일치시킴 -->
+	<select id="getList" resultMap="freeResultSet">
+		SELECT fb_title, fb_content, fb_indate, fb_views, m_name FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
+		
+		<!-- xml 파일 내에서 조건을 주는 방법 (동적쿼리) -->
+		<!-- 조건에 부합하지 않다면 조건식 제외한 쿼리만 실행 -->
+		<choose>
+			<!-- category: FreeDto에 선언된 category(getListCount 메소드에 매개변수로 전달된 객체임) -->
+			<when test="category.equals('fb_title')">
+				WHERE fb_title LIKE '%' || #{searchText} || '%'
+			</when>
+			<when test="category.equals('fb_content')">
+				WHERE fb_content LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+	</select>
+	
+	<!-- resultType: 반환타입 -->
+	<!-- _int: 정수형 타입(기본형 int) -->
+	<!-- int: 객체(Integer) -->
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*) FROM FREE_BOARD
+		
+		<!-- xml 파일 내에서 조건을 주는 방법 (동적쿼리) -->
+		<!-- 조건에 부합하지 않다면 조건식 제외한 쿼리만 실행 -->
+		<choose>
+			<!-- category: FreeDto에 선언된 category(getListCount 메소드에 매개변수로 전달된 객체임) -->
+			<when test="category.equals('fb_title')">
+				WHERE fb_title LIKE '%' || #{searchText} || '%'
+			</when>
+			<when test="category.equals('fb_content')">
+				WHERE fb_content LIKE '%' || #{searchText} || '%'
+			</when>
+		</choose>
+	</select>
+
+</mapper>
