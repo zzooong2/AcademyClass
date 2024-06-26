@@ -9,10 +9,12 @@
 	
 	<typeAliases>
 		<typeAlias type="kr.co.green.board.model.dto.FreeDto" alias="free"/>
+		<typeAlias type="kr.co.green.board.model.dto.NewsDto" alias="news"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="/mappers/board/free-mapper.xml"/>
+		<mapper resource="/mappers/board/news-mapper.xml"/>
 	</mappers>
 	
 </configuration>

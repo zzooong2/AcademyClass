@@ -44,7 +44,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="free" items="${list}">
-						<tr onclick="location.href=''">
+						<tr onclick="location.href='/free/detail.do?boardNo=${free.boardNo}'">
 							<td scope="row">${row}</td>
 							<td>${free.boardTitle}</td>
 							<td>${free.memberName}</td>
