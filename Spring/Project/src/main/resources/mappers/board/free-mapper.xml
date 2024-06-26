@@ -21,7 +21,7 @@
 	<!-- id: FreeDao 파일의 22번줄에 기재한 getList -->
 	<!-- resultMap: resultMap 태그의 id와 일치시킴 -->
 	<select id="getList" resultMap="freeResultSet">
-		SELECT fb_title, fb_content, fb_indate, fb_views, m_name FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
+		SELECT fb_no, fb_title, fb_content, fb_indate, fb_views, m_name FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
 		
 		<!-- xml 파일 내에서 조건을 주는 방법 (동적쿼리) -->
 		<!-- 조건에 부합하지 않다면 조건식 제외한 쿼리만 실행 -->
@@ -36,16 +36,10 @@
 		</choose>
 	</select>
 	
-	<!-- resultType: 반환타입 -->
-	<!-- _int: 정수형 타입(기본형 int) -->
-	<!-- int: 객체(Integer) -->
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*) FROM FREE_BOARD
 		
-		<!-- xml 파일 내에서 조건을 주는 방법 (동적쿼리) -->
-		<!-- 조건에 부합하지 않다면 조건식 제외한 쿼리만 실행 -->
 		<choose>
-			<!-- category: FreeDto에 선언된 category(getListCount 메소드에 매개변수로 전달된 객체임) -->
 			<when test="category.equals('fb_title')">
 				WHERE fb_title LIKE '%' || #{searchText} || '%'
 			</when>
@@ -54,5 +48,15 @@
 			</when>
 		</choose>
 	</select>
-
+	
+	<select id="getFreeDetail" resultMap="freeResultSet">
+		SELECT fb_no, fb_title, fb_content, fb_indate, fb_views, m_name
+		 FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
+		 WHERE fb_no = #{boardNo}
+	</select>
+	
+	<update id="addViews">
+		UPDATE FREE_BOARD SET fb_views = fb_views+1 WHERE fb_no = #{boardNo}
+	</update>
+	
 </mapper>
