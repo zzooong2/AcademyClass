@@ -1,8 +1,8 @@
 package kr.co.green.board.controller;
 
 import java.util.List;
+import java.util.Objects;
 
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.green.board.model.dto.BoardDto;
 import kr.co.green.board.model.dto.FreeDto;
 import kr.co.green.board.model.service.FreeServiceImpl;
 import kr.co.green.common.paging.PageInfo;
@@ -17,7 +18,7 @@ import kr.co.green.common.paging.Pagination;
 
 @Controller 
 @RequestMapping("/free") // GET + POST
-public class BoardController {
+public class FreeController {
 	// (2) new 키워드를 사용하지 않고 Autowired 어노테이션으로 자동생성 가능(불변성이 없다는 단점이 존재)
 //	@Autowired 
 //	private FreeDto fd;
@@ -26,11 +27,11 @@ public class BoardController {
 	private final FreeServiceImpl freeService;
 	
 	@Autowired
-	public BoardController(FreeServiceImpl freeService) {
+	public FreeController(FreeServiceImpl freeService) {
 		this.freeService = freeService;
 	}
 	
-	
+	// 게시글 리스트 조회
 	@GetMapping("/list.do")
 	// @RequestParam: spring에서 쿼리스트링을 받을 때 사용 / value = key 
 	public String getFreeList(Model model, 
@@ -49,7 +50,7 @@ public class BoardController {
 		
 		PageInfo pi = Pagination.getPageInfo(listCount, cpage, pageLimit, boardLimit);
 		
-		List<FreeDto> list = freeService.getList(pi, fd);
+		List<BoardDto> list = freeService.getList(pi, fd);
 		
 		// 데이터 바인딩
 		model.addAttribute("row", row);
@@ -59,6 +60,19 @@ public class BoardController {
 		// src > main > webapp > WEB-INF > spring > appServlet
 		// 위 경로에 위치한 servlet-context.xml 파일에 19~20 열에 기재되어 있기에 "/WEB-INF/views/", ".jsp" 생략 가능
 		return "board/free/freeList";
+	}
+	
+	
+	
+	@GetMapping("/detail.do")
+	public String getDetail(Model model, BoardDto fd) {
+		BoardDto detail = freeService.getDetail(fd);
+		
+		if(!Objects.isNull(detail)) {
+			model.addAttribute("detail", detail);
+			return "board/free/freeDetail";
+		}
+			return "common/error";
 	}
 	
 }
