@@ -47,5 +47,16 @@ public class NewsServiceImpl implements BoardService {
 		}
 	}
 	
+	// 게시글 작성 비즈니스 로직
+	@Override
+	public int setEnroll(BoardDto bDto) {
+		return 0;
+	}
+	
+	// 게시글 삭제
+	@Override
+	public int delete(int boardNo) {
+		return 0;
+	}
 }
 

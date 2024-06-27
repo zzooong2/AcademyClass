@@ -42,4 +42,14 @@ public class FreeDao {
 	public int addViews(BoardDto bDto) {
 		return sqlSession.update("freeMapper.addViews", bDto);
 	}
+	
+	// 게시글 작성 비즈니스 로직
+	public int setEnroll(BoardDto bDto) {
+		return sqlSession.insert("freeMapper.setEnroll", bDto);
+	}
+	
+	// 게시글 삭제
+	public int delete(int boardNo) {
+		return sqlSession.insert("freeMapper.delete", boardNo);
+	}
 }

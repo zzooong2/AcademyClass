@@ -12,9 +12,14 @@ public interface BoardService {
 	public List<BoardDto> getList(PageInfo pi, BoardDto bDto);
 	
 	// 게시글 수량 조회
-	public int getListCount( BoardDto bDto);
+	public int getListCount(BoardDto bDto);
 	
 	// 게시글 상세 조회(조회수 증가)
-	public BoardDto getDetail( BoardDto bDto);
+	public BoardDto getDetail(BoardDto bDto);
 	
+	// 게시글 작성
+	public int setEnroll(BoardDto bDto);
+	
+	// 게시글 삭제
+	public int delete(int boardNo);
 }

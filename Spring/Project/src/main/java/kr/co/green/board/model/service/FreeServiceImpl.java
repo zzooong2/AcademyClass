@@ -21,17 +21,20 @@ public class FreeServiceImpl implements BoardService{
 		this.fDao = fDao;
 		this.fDto = new FreeDto();
 	}
-
+	
+	// 전체 게시글 조회
 	@Override
 	public List<BoardDto> getList(PageInfo pi, BoardDto bDto) {
 		return fDao.getList(pi, bDto);
 	}
 	
+	// 게시글 수량 조회
 	@Override
 	public int getListCount(BoardDto bDto) {
 		return fDao.getListCount(bDto);
 	}
 	
+	// 게시글 상세보기
 	@Override
 	public BoardDto getDetail(BoardDto bDto) {
 		
@@ -45,5 +48,16 @@ public class FreeServiceImpl implements BoardService{
 			return null;
 		}
 	}
-
+	
+	// 게시글 작성 비즈니스 로직
+	@Override
+	public int setEnroll(BoardDto bDto) {
+		return fDao.setEnroll(bDto);
+	}
+	
+	// 게시글 삭제
+	@Override
+	public int delete(int boardNo) {
+		return fDao.delete(boardNo);
+	}
 }
