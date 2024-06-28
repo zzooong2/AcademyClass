@@ -2,10 +2,13 @@ package kr.co.green.board.model.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.green.board.model.dto.BoardDto;
 import kr.co.green.board.model.dto.FreeDto;
@@ -48,8 +51,24 @@ public class FreeDao {
 		return sqlSession.insert("freeMapper.setEnroll", bDto);
 	}
 	
+	// 게시글 작성시 파일 업로드
+	public int setUpload(BoardDto bDto) {
+		return sqlSession.insert("freeMapper.setUpload", bDto);
+	}
+	
 	// 게시글 삭제
 	public int delete(int boardNo) {
 		return sqlSession.insert("freeMapper.delete", boardNo);
 	}
+	
+	// 게시글 수정 페이지 이동
+	public BoardDto getEditForm(int boardNo) {
+		return sqlSession.selectOne("freeMapper.getEditForm", boardNo);
+	}
+	
+	// 게시글 수정
+	public int edit(BoardDto bDto) {
+		return sqlSession.update("freeMapper.edit", bDto);
+	}
+	
 }

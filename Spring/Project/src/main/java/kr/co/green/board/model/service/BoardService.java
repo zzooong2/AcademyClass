@@ -2,8 +2,11 @@ package kr.co.green.board.model.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.co.green.board.model.dto.BoardDto;
-import kr.co.green.board.model.dto.FreeDto;
 import kr.co.green.common.paging.PageInfo;
 
 public interface BoardService {
@@ -18,8 +21,14 @@ public interface BoardService {
 	public BoardDto getDetail(BoardDto bDto);
 	
 	// 게시글 작성
-	public int setEnroll(BoardDto bDto);
+	public int setEnroll(BoardDto bDto, MultipartFile upload, HttpSession session);
 	
 	// 게시글 삭제
 	public int delete(int boardNo);
+	
+	// 게시글 수정 페이지 이동
+	public BoardDto getEditForm(int boardNo);
+	
+	// 게시글 수정
+	public int edit(BoardDto bDto);
 }

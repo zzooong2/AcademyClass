@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.green.board.model.dto.BoardDto;
 import kr.co.green.board.model.dto.FreeDto;
@@ -68,8 +69,13 @@ public class FreeController {
 	@GetMapping("/detail.do")
 	public String getDetail(Model model, BoardDto fd) {
 		BoardDto detail = freeService.getDetail(fd);
-
+		
 		if (!Objects.isNull(detail)) {
+			if (detail.getUploadPath() != null && detail.getUploadNo() != null && detail.getUploadName() != null && detail.getUploadOriginName() != null) {
+				int pathIndex = detail.getUploadPath().lastIndexOf("resources");
+				String path = "/" + detail.getUploadPath().substring(pathIndex);
+				detail.setUploadPath(path);
+			}
 			model.addAttribute("detail", detail);
 			return "board/free/freeDetail";
 		}
@@ -90,9 +96,9 @@ public class FreeController {
 
 	// 게시글 작성 로직
 	@PostMapping("/enroll.do")
-	public String setEnroll(BoardDto bDto, HttpSession session) {
+	public String setEnroll(BoardDto bDto, MultipartFile upload ,HttpSession session) {
 		bDto.setMemberNo((int) session.getAttribute("memberNo"));
-		int result = freeService.setEnroll(bDto);
+		int result = freeService.setEnroll(bDto, upload, session);
 
 		if (result == 1) {
 			return "redirect:/free/list.do";
@@ -115,8 +121,24 @@ public class FreeController {
 	
 	// 게시글 수정 페이지 이동
 	@GetMapping("/editForm.do")
-	public String getEditForm() {
+	public String getEditForm(Model model, int boardNo) {
+		BoardDto result = freeService.getEditForm(boardNo);
+		
+		model.addAttribute("result", result);
+		
 		return "board/free/freeEdit";
+	}
+	
+	// 게시글 수정 비즈니스 로직
+	@PostMapping("/edit.do")
+	public String edit(BoardDto bd) {
+		int result = freeService.edit(bd);
+		
+		if(result == 1) {
+			return "redirect:/free/detail.do?boardNo=" + bd.getBoardNo();
+		} else {
+			return "common/error";
+		}
 	}
 
 }

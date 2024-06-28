@@ -15,4 +15,6 @@ public class BoardDto {
 	
 	private String category = "";
 	private String searchText = "";
+	
+	private String uploadNo, uploadPath, uploadName, uploadOriginName;
 }

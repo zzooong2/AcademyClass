@@ -2,12 +2,14 @@ package kr.co.green.board.model.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.green.board.model.dao.NewsDao;
 import kr.co.green.board.model.dto.BoardDto;
-import kr.co.green.board.model.dto.FreeDto;
 import kr.co.green.board.model.dto.NewsDto;
 import kr.co.green.common.paging.PageInfo;
 
@@ -47,15 +49,27 @@ public class NewsServiceImpl implements BoardService {
 		}
 	}
 	
+	
+//	-------------------------------------------------------------------------------------------
 	// 게시글 작성 비즈니스 로직
 	@Override
-	public int setEnroll(BoardDto bDto) {
+	public int setEnroll(BoardDto bDto, MultipartFile upload, HttpSession session) {
 		return 0;
 	}
 	
 	// 게시글 삭제
 	@Override
 	public int delete(int boardNo) {
+		return 0;
+	}
+
+	@Override
+	public BoardDto getEditForm(int boardNo) {
+		return null;
+	}
+
+	@Override
+	public int edit(BoardDto bDto) {
 		return 0;
 	}
 }

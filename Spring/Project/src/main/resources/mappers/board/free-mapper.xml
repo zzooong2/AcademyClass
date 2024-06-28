@@ -14,10 +14,15 @@
 		<result column="fb_content" property="boardContent"></result>
 		<result column="fb_indate" property="boardIndate"></result>
 		<result column="fb_views" property="boardViews"></result>
+		
 		<result column="m_name" property="memberName"></result>
 		<result column="m_no" property="memberNo"></result>
+		
+		<result column="u_no" property="uploadNo"></result>
+		<result column="u_path" property="uploadPath"></result>
+		<result column="u_name" property="uploadName"></result>
+		<result column="u_origin_name" property="uploadOriginName"></result>
 	</resultMap>
-	
 	<!-- id: FreeDao 파일의 22번줄에 기재한 getList -->
 	<!-- resultMap: resultMap 태그의 id와 일치시킴 -->
 	<select id="getList" resultMap="freeResultSet">
@@ -34,6 +39,8 @@
 				WHERE fb_content LIKE '%' || #{searchText} || '%'
 			</when>
 		</choose>
+		
+		ORDER BY fb_indate DESC
 	</select>
 	
 	<select id="getListCount" resultType="_int">
@@ -48,15 +55,48 @@
 			</when>
 		</choose>
 	</select>
-	
+
 	<select id="getFreeDetail" resultMap="freeResultSet">
-		SELECT fb_no, fb_title, fb_content, fb_indate, fb_views, m_name
-		 FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
-		 WHERE fb_no = #{boardNo}
+		SELECT fb.fb_no, fb.fb_title, fb.fb_content, fb.fb_indate, fb.fb_views, 
+		m.m_name, m.m_no, 
+		u.u_no, u.u_path, u.u_name, u.u_origin_name
+		 FROM FREE_BOARD fb
+		 JOIN MEMBER m ON fb.m_no = m.m_no
+		 LEFT JOIN UPLOAD u ON u.fb_no = fb.FB_NO
+		 WHERE fb.fb_no = #{boardNo}
 	</select>
 	
 	<update id="addViews">
 		UPDATE FREE_BOARD SET fb_views = fb_views+1 WHERE fb_no = #{boardNo}
 	</update>
+	
+	<insert id="setEnroll">
+		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+			SELECT free_board_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO FREE_BOARD(fb_no, fb_title, fb_content, fb_views, fb_indate, m_no)
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent}, DEFAULT, DEFAULT, #{memberNo})
+	</insert>
+	
+	<delete id="delete">
+		DELETE FREE_BOARD WHERE fb_no = #{boardNo}
+	</delete>
+	
+	<select id="getEditForm" resultMap="freeResultSet">
+		SELECT fb_no, fb_title, fb_content, fb_indate, fb_views, m_name
+		 FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
+		 WHERE fb_no = #{boardNo}
+	</select>
+	
+	<update id="edit">
+		UPDATE FREE_BOARD 
+		SET fb_title = #{boardTitle}, fb_content = #{boardContent}
+		WHERE fb_no = #{boardNo}
+	</update>
+	
+	<insert id="setUpload">
+		INSERT INTO UPLOAD
+		VALUES(upload_seq.nextval, #{uploadPath}, #{uploadName}, #{uploadOriginName}, #{boardNo})
+	</insert>
 	
 </mapper>

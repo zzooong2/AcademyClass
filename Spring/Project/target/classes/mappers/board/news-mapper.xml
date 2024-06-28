@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="newsMapper">
+
+	<resultMap type="news" id="newsResultSet">
+		<result column="nb_no" property="boardNo"></result>
+		<result column="nb_title" property="boardTitle"></result>
+		<result column="nb_content" property="boardContent"></result>
+		<result column="nb_indate" property="boardIndate"></result>
+		<result column="nb_views" property="boardViews"></result>
+		<result column="m_no" property="memberNo"></result>
+		<result column="m_name" property="memberName"></result>
+	</resultMap>
+
+	<select id="getList" resultMap="newsResultSet">
+		SELECT nb.nb_no, nb.nb_title, nb.nb_content, nb.nb_views, nb.nb_indate, nb.m_no, m.m_name
+		FROM NEWS_BOARD nb
+		JOIN MEMBER m ON m.m_no = nb.m_no
+		
+		<choose>
+			<when test="category.equals('nb_title')">
+				WHERE nb_title LIKE '%' || #{searchText} ||  '%'
+			</when>
+			<when test="category.equals('nb_content')">
+				WHERE nb_title LIKE '%' || #{searchText} ||  '%'
+			</when>
+		</choose>
+	</select>
+	
+	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*) FROM NEWS_BOARD
+		
+		<choose>
+			<when test="category.equals('nb_title')">
+				WHERE nb_title LIKE '%' || #{searchText} ||  '%'
+			</when>
+			<when test="category.equals('nb_content')">
+				WHERE nb_title LIKE '%' || #{searchText} ||  '%'
+			</when>
+		</choose>
+	</select>
+	
+	<select id="getNewsDetail" resultMap="newsResultSet">
+		SELECT nb.nb_no, nb.nb_title, nb.nb_content, nb.nb_views, nb.nb_indate, nb.m_no, m.m_name
+		FROM NEWS_BOARD nb
+		JOIN MEMBER m ON m.m_no = nb.m_no
+		WHERE nb.nb_no = #{boardNo}
+	</select>
+	
+	<update id="addViews">
+		UPDATE NEWS_BOARD SET nb_views = nb_views+1 WHERE nb_no = #{boardNo}
+	</update>
+</mapper>
