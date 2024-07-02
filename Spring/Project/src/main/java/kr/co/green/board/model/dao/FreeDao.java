@@ -62,13 +62,24 @@ public class FreeDao {
 	}
 	
 	// 게시글 수정 페이지 이동
-	public BoardDto getEditForm(int boardNo) {
-		return sqlSession.selectOne("freeMapper.getEditForm", boardNo);
+	public BoardDto getEditForm(BoardDto bd) {
+		return sqlSession.selectOne("freeMapper.getEditForm", bd);
 	}
 	
 	// 게시글 수정
 	public int edit(BoardDto bDto) {
 		return sqlSession.update("freeMapper.edit", bDto);
 	}
+	
+	// 게시글 파일명 조회
+	public BoardDto getFileName(int boardNo) {
+		return sqlSession.selectOne("freeMapper.getFileName", boardNo);
+	}
+	
+	// 게시글 수정 파일 업로드
+	public int setUploadUpdate(BoardDto bDto) {
+		return sqlSession.update("freeMapper.setUploadUpdate", bDto);
+	}
+	
 	
 }

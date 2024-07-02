@@ -1,4 +1,5 @@
 package kr.co.green.common.paging;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.green.board.model.dto.BoardDto;
@@ -18,17 +19,18 @@ public interface BoardService {
 	public int getListCount(BoardDto bDto);
 	
 	// 게시글 상세 조회(조회수 증가)
-	public BoardDto getDetail(BoardDto bDto);
+	public BoardDto getDetail(BoardDto bDto, String type);
 	
 	// 게시글 작성
 	public int setEnroll(BoardDto bDto, MultipartFile upload, HttpSession session);
 	
 	// 게시글 삭제
-	public int delete(int boardNo);
+//	public int delete(int boardNo, int memberNo, HttpSession session);
+	public int delete(int boardNo, int memberNo, @SessionAttribute("memberNo") int loginMemberNo);
 	
 	// 게시글 수정 페이지 이동
-	public BoardDto getEditForm(int boardNo);
+	public BoardDto getEditForm(BoardDto bd);
 	
 	// 게시글 수정
-	public int edit(BoardDto bDto);
+	public int edit(BoardDto bDto, MultipartFile upload, int loginMemberNo);
 }

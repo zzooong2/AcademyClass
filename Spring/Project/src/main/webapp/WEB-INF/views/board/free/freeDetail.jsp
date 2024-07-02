@@ -48,7 +48,7 @@
 					<button type="button" class="btn btn-secondary mx-2" onclick="window.history.back()">뒤로가기</button>
 					<c:if test="${detail.memberName == sessionScope.memberName}">
 						<button type="submit" class="btn btn-primary mx-2">수정</button>
-						<button type="button" class="btn btn-danger mx-2"  onclick="location.href='/free/delete.do?boardNo=${param.boardNo}'">삭제</button>
+						<button type="button" class="btn btn-danger mx-2"  onclick="location.href='/free/delete.do?boardNo=${detail.boardNo}&memberNo=${detail.memberNo}'">삭제</button>
 					</c:if>
 				</div>
 

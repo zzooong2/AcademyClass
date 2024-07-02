@@ -20,7 +20,7 @@
 
 <%-- 	<section class="container mt-4" style="height: 70vh">
 		<div class="card text-center" style="height: 100%">
-			<form action="/free/edit.do" method="POST">
+			<form action="/news/edit.do" method="POST">
 				<div class="card-header">
 					<input type="hidden" name="boardNo" value="${param.boardNo}"/>
 					<input type="text" name="boardTitle" value="${detail.boardTitle}" />
@@ -51,7 +51,7 @@
 	
 		<section class="container mt-4" style="height: 70vh">
 		<div class="card text-center" style="height: 100%">
-			<form action="/free/edit.do" method="POST" enctype="multipart/form-data">
+			<form action="/news/edit.do" method="POST" enctype="multipart/form-data">
 				<div class="card-header">
 					<input type="text" name="boardTitle" value="${detail.boardTitle}" />
 					<input type="hidden" name="boardNo" value="${param.boardNo}"/>

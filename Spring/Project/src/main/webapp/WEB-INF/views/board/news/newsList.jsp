@@ -25,7 +25,9 @@
 						<input type="text" class="form-control" name="searchText" placeholder="검색어를 입력해주세요." style="width: 500px;">
 						<button class="btn btn-outline-secondary" type="submit" id="button-addon2" style="height: 46px;">검색</button>
 					</form>
-					<button onclick="window.location.href = ''" style="position: absolute; right: 4%;">등록</button>
+					<c:if test="${sessionScope.memberNo > 0}">
+						<button type="button" onclick="window.location.href = '/news/enrollForm.do'" style="position: absolute; right: 4%;">등록</button>
+					</c:if>
 				</div>
 			</div>
 			
@@ -33,7 +35,7 @@
 			<c:forEach var="news" items="${list}">
 				<div class="col-12 col-md-6 col-lg-2 mb-4">
 					<div class="card">
-						<img src="./다운로드.jpg" class="card-img-top" alt="뉴스 이미지" />
+						<img src="${news.uploadPath}${news.uploadName}" class="card-img-top" alt="뉴스 이미지" />
 						<div class="card-body">
 							<h5 class="card-title">${news.boardTitle}</h5>
 							<p class="card-text">${news.boardContent}</p>

@@ -9,15 +9,26 @@
 		<result column="nb_content" property="boardContent"></result>
 		<result column="nb_indate" property="boardIndate"></result>
 		<result column="nb_views" property="boardViews"></result>
-		<result column="m_no" property="memberNo"></result>
+		
 		<result column="m_name" property="memberName"></result>
+		<result column="m_no" property="memberNo"></result>
+		
+		<result column="u_no" property="uploadNo"></result>
+		<result column="u_path" property="uploadPath"></result>
+		<result column="u_name" property="uploadName"></result>
+		<result column="u_origin_name" property="uploadOriginName"></result>
+		
+		<result column="nu_no" property="uploadNo"></result>
+		<result column="nu_path" property="uploadPath"></result>
+		<result column="nu_name" property="uploadName"></result>
+		<result column="nu_origin_name" property="uploadOriginName"></result>
 	</resultMap>
 
 	<select id="getList" resultMap="newsResultSet">
-		SELECT nb.nb_no, nb.nb_title, nb.nb_content, nb.nb_views, nb.nb_indate, nb.m_no, m.m_name
+		SELECT nb.nb_no, nb.nb_title, nb.nb_content, nb.nb_views, nb.nb_indate, nb.m_no, m.m_name, nu.nu_path, nu.nu_name
 		FROM NEWS_BOARD nb
 		JOIN MEMBER m ON m.m_no = nb.m_no
-		
+		LEFT JOIN NEWS_UPLOAD nu ON nu.nb_no = nb.nb_no
 		<choose>
 			<when test="category.equals('nb_title')">
 				WHERE nb_title LIKE '%' || #{searchText} ||  '%'
@@ -26,6 +37,7 @@
 				WHERE nb_title LIKE '%' || #{searchText} ||  '%'
 			</when>
 		</choose>
+		ORDER BY nb.nb_indate DESC
 	</select>
 	
 	
@@ -43,13 +55,45 @@
 	</select>
 	
 	<select id="getNewsDetail" resultMap="newsResultSet">
-		SELECT nb.nb_no, nb.nb_title, nb.nb_content, nb.nb_views, nb.nb_indate, nb.m_no, m.m_name
+		SELECT nb.nb_no, nb.nb_title, nb.nb_content, nb.nb_views, nb.nb_indate, nb.m_no, m.m_name, nu.nu_no, nu.nu_path, nu.nu_name, nu.nu_origin_name
 		FROM NEWS_BOARD nb
 		JOIN MEMBER m ON m.m_no = nb.m_no
+		LEFT JOIN NEWS_UPLOAD nu ON nu.nb_no = nb.nb_no  
 		WHERE nb.nb_no = #{boardNo}
 	</select>
 	
 	<update id="addViews">
 		UPDATE NEWS_BOARD SET nb_views = nb_views+1 WHERE nb_no = #{boardNo}
 	</update>
+	
+	<insert id="setEnroll">
+		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+			SELECT news_board_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO news_board VALUES(#{boardNo}, #{boardTitle}, #{boardContent}, default, default, null, null, #{memberNo})
+	</insert>
+	
+	<insert id="setUpload">
+		INSERT INTO news_upload VALUES(upload_seq.nextval, #{uploadPath}, #{uploadName}, #{uploadOriginName}, #{boardNo})
+	</insert>
+	
+	<update id="updateBoard">
+		UPDATE NEWS_BOARD SET nb_title = #{boardTitle}, nb_content = #{boardContent} WHERE nb_no = #{boardNo}
+	</update>
+	
+	<select id="getFileName" resultMap="newsResultSet">
+		SELECT nu_no, nu_path, nu_name, nu_origin_name FROM news_upload WHERE nb_no = #{boardNo}
+	</select>
+	
+	<update id="setNewsUploadUpdate">
+		UPDATE news_upload SET nu_path = #{uploadPath}, nu_name = #{uploadName}, nu_origin_name = #{uploadOriginName} WHERE nb_no = #{boardNo}
+	</update>
+	
+	<delete id="deleteBoard">
+		DELETE news_board WHERE nb_no = #{boardNo}
+	</delete>
+	
+	<delete id="deleteBoardData">
+		DELETE news_upload where nb_no = #{boardNo}
+	</delete>
 </mapper>

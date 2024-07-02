@@ -28,15 +28,16 @@
 	<select id="getList" resultMap="freeResultSet">
 		SELECT fb_no, fb_title, fb_content, fb_indate, fb_views, m_name FROM FREE_BOARD fb JOIN MEMBER m ON fb.m_no = m.m_no
 		
+		WHERE fb_delete IS NULL
 		<!-- xml 파일 내에서 조건을 주는 방법 (동적쿼리) -->
 		<!-- 조건에 부합하지 않다면 조건식 제외한 쿼리만 실행 -->
 		<choose>
 			<!-- category: FreeDto에 선언된 category(getListCount 메소드에 매개변수로 전달된 객체임) -->
 			<when test="category.equals('fb_title')">
-				WHERE fb_title LIKE '%' || #{searchText} || '%'
+				AND fb_title LIKE '%' || #{searchText} || '%'
 			</when>
 			<when test="category.equals('fb_content')">
-				WHERE fb_content LIKE '%' || #{searchText} || '%'
+				AND fb_content LIKE '%' || #{searchText} || '%'
 			</when>
 		</choose>
 		
@@ -45,13 +46,13 @@
 	
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*) FROM FREE_BOARD
-		
+		WHERE fb_delete IS NULL
 		<choose>
 			<when test="category.equals('fb_title')">
-				WHERE fb_title LIKE '%' || #{searchText} || '%'
+				AND fb_title LIKE '%' || #{searchText} || '%'
 			</when>
 			<when test="category.equals('fb_content')">
-				WHERE fb_content LIKE '%' || #{searchText} || '%'
+				AND fb_content LIKE '%' || #{searchText} || '%'
 			</when>
 		</choose>
 	</select>
@@ -74,13 +75,13 @@
 		<selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
 			SELECT free_board_seq.nextval FROM dual
 		</selectKey>
-		INSERT INTO FREE_BOARD(fb_no, fb_title, fb_content, fb_views, fb_indate, m_no)
-		VALUES(#{boardNo}, #{boardTitle}, #{boardContent}, DEFAULT, DEFAULT, #{memberNo})
+		INSERT INTO FREE_BOARD
+		VALUES(#{boardNo}, #{boardTitle}, #{boardContent}, DEFAULT, DEFAULT, NULL, NULL, #{memberNo})
 	</insert>
 	
-	<delete id="delete">
-		DELETE FREE_BOARD WHERE fb_no = #{boardNo}
-	</delete>
+	<update id="delete">
+		UPDATE FREE_BOARD SET fb_delete = sysdate WHERE fb_no = #{boardNo}
+	</update>
 	
 	<select id="getEditForm" resultMap="freeResultSet">
 		SELECT fb_no, fb_title, fb_content, fb_indate, fb_views, m_name
@@ -90,7 +91,7 @@
 	
 	<update id="edit">
 		UPDATE FREE_BOARD 
-		SET fb_title = #{boardTitle}, fb_content = #{boardContent}
+		SET fb_title = #{boardTitle}, fb_content = #{boardContent}, fb_update = sysdate
 		WHERE fb_no = #{boardNo}
 	</update>
 	
@@ -99,4 +100,11 @@
 		VALUES(upload_seq.nextval, #{uploadPath}, #{uploadName}, #{uploadOriginName}, #{boardNo})
 	</insert>
 	
+	<select id="getFileName" resultMap="freeResultSet">
+		SELECT u_path, u_name FROM UPLOAD where fb_no = #{boardNo}
+	</select>
+	
+	<update id="setUploadUpdate">
+		UPDATE upload SET u_path = #{uploadPath}, u_name = #{uploadName}, u_origin_name = #{uploadOriginName} WHERE fb_no = #{boardNo}
+	</update>
 </mapper>

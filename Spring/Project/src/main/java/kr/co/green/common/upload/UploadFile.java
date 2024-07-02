@@ -1,5 +1,6 @@
 package kr.co.green.common.upload;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,12 +19,19 @@ import kr.co.green.board.model.dto.BoardDto;
 @Component
 public class UploadFile {
 	
-	public static final String UPLOAD_PATH = "/Users/zzooong2/green/Green/src/kr/co/Spring/Project/src/main/webapp/resources/uploads/";
+	public static final String UPLOAD_PATH = "/Users/kimhyunjoong/AcademyClass/Spring/Project/src/main/webapp/resources/uploads/";
 	
+	// 파일 삭제
+	public boolean deleteFile(BoardDto bDto){
+		File file = new File(bDto.getUploadPath()+bDto.getUploadName());
+		return file.delete();
+	}
+	
+	// 파일 업로드
 	public void upload(BoardDto bDto, MultipartFile upload, HttpSession session) {
 		// 원본 파일 이름
 		String originName = upload.getOriginalFilename();
-
+		
 		// 파일의 확장자
 		String extension = originName.substring(originName.lastIndexOf("."));
 		

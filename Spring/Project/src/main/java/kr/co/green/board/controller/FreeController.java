@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.green.board.model.dto.BoardDto;
@@ -68,7 +69,7 @@ public class FreeController {
 	// 게시글 상세보기
 	@GetMapping("/detail.do")
 	public String getDetail(Model model, BoardDto fd) {
-		BoardDto detail = freeService.getDetail(fd);
+		BoardDto detail = freeService.getDetail(fd, "detail");
 		
 		if (!Objects.isNull(detail)) {
 			if (detail.getUploadPath() != null && detail.getUploadNo() != null && detail.getUploadName() != null && detail.getUploadOriginName() != null) {
@@ -109,9 +110,10 @@ public class FreeController {
 
 	// 게시글 삭제
 	@GetMapping("/delete.do")
-	public String delete(int boardNo) {
-		int result = freeService.delete(boardNo);
-
+//	public String delete(int boardNo, int memberNo, HttpSession session) {
+	public String delete(int boardNo, int memberNo, @SessionAttribute("memberNo") int loginMemberNo) {
+		int result = freeService.delete(boardNo, memberNo, loginMemberNo);
+		
 		if (result == 1) {
 			return "redirect:/free/list.do";
 		} else {
@@ -121,23 +123,31 @@ public class FreeController {
 	
 	// 게시글 수정 페이지 이동
 	@GetMapping("/editForm.do")
-	public String getEditForm(Model model, int boardNo) {
-		BoardDto result = freeService.getEditForm(boardNo);
+	public String getEditForm(Model model, BoardDto fd, HttpSession session) {
+		BoardDto detail = freeService.getDetail(fd, "edit");
 		
-		model.addAttribute("result", result);
+		if (!Objects.isNull(detail)) {
+			if (detail.getUploadPath() != null && detail.getUploadNo() != null && detail.getUploadName() != null && detail.getUploadOriginName() != null) {
+				int pathIndex = detail.getUploadPath().lastIndexOf("resources");
+				String path = "/" + detail.getUploadPath().substring(pathIndex);
+				detail.setUploadPath(path);
+			}
+			model.addAttribute("detail", detail);
+			return "board/free/freeEdit";
+		}
+		return "common/error";
 		
-		return "board/free/freeEdit";
 	}
 	
 	// 게시글 수정 비즈니스 로직
 	@PostMapping("/edit.do")
-	public String edit(BoardDto bd) {
-		int result = freeService.edit(bd);
+	public String edit(BoardDto bd, MultipartFile upload, @SessionAttribute("memberNo") int loginMemberNo) {
+		int result = freeService.edit(bd, upload, loginMemberNo);
 		
 		if(result == 1) {
 			return "redirect:/free/detail.do?boardNo=" + bd.getBoardNo();
 		} else {
-			return "common/error";
+			return "/common/error";
 		}
 	}
 
