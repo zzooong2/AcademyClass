@@ -31,18 +31,31 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<beans:bean id="loginCheckinterceptor" class="kr.co.green.common.interceptor.LoginCheckInterceptor">
-	</beans:bean>
+	<beans:bean id="loginCheckinterceptor" class="kr.co.green.common.interceptor.LoginCheckInterceptor"></beans:bean>
+	<beans:bean id="accessInterceptor" class="kr.co.green.common.interceptor.AccessInterceptor"></beans:bean>
 
 	<interceptors>
 		<interceptor>
 			<!-- mapping: 인터셉터를 적용할 경로 -->
 			<mapping path="/**/enrollForm.do"/>
+			
 			<!-- exclude-mapping:  -->
 			<exclude-mapping path="/**/*.css"/>
 			<exclude-mapping path="/**/*.js"/>
-			<!-- beans:ref: 어떤 빈에 적용할건지 (35열에 기재한 빈) -->
+			
+			<!-- beans:ref: 어떤 빈에 적용할건지 (34열에 기재한 빈) -->
 			<beans:ref bean="loginCheckinterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/member/**" />
+			<mapping path="/news/**" />
+			<mapping path="/free/**" />
+			
+			<exclude-mapping path="/**/*.css" />	
+			<exclude-mapping path="/**/*.js" />
+			
+			<beans:ref bean="accessInterceptor"></beans:ref>
 		</interceptor>
 	</interceptors>
 

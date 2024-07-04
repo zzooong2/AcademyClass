@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,7 @@ public class FreeController {
 
 	// (3) 불변성이 없다는 단점을 보완하기 위해 상수 + 생성자 이용
 	private final FreeServiceImpl freeService;
+	private static final Logger logger = LogManager.getLogger(FreeController.class);
 
 	@Autowired
 	public FreeController(FreeServiceImpl freeService) {
@@ -39,11 +42,13 @@ public class FreeController {
 	// 게시글 리스트 조회
 	@GetMapping("/list.do")
 	// @RequestParam: spring에서 쿼리스트링을 받을 때 사용 / value = key
-	public String getFreeList(Model model, @RequestParam(value = "cpage", defaultValue = "1") int cpage, FreeDto fd) {
+	public String getFreeList(Model model, @RequestParam(value = "cpage", defaultValue = "1") int cpage, FreeDto fd, HttpSession session) {
 		// (1) DTO 객체 생성, Service 호출
 //		FreeDto fd = new FreeDto();
 //		FreeServiceImpl freeService = new FreeServiceImpl();
-
+		
+		logger.info("/free/list.do 호출완료: cpage={}, memberNo={}", cpage, session.getAttribute("memberNo"));
+		
 		// 페이지처리
 		// 1. 전체 게시글 수 구하기
 		int listCount = freeService.getListCount(fd);
@@ -60,6 +65,12 @@ public class FreeController {
 		model.addAttribute("pi", pi);
 		model.addAttribute("list", list);
 
+		// debug, info, error
+		// debug: 어떤 변수를 확인하거나, 값이 잘 들어 왔는지 확인
+		// info: 게시글 조회 요청(boardNo=3), 게시글 등록 성공
+		// error: 예외 발생, 게시글 등록 실패, 사용자 검증 실패, 게시글 제목이 너무 길때
+		logger.debug("호출된 게시글: list size={}", list.size());
+		
 		// src > main > webapp > WEB-INF > spring > appServlet
 		// 위 경로에 위치한 servlet-context.xml 파일에 19~20 열에 기재되어 있기에 "/WEB-INF/views/", ".jsp"
 		// 생략 가능
@@ -68,7 +79,7 @@ public class FreeController {
 
 	// 게시글 상세보기
 	@GetMapping("/detail.do")
-	public String getDetail(Model model, BoardDto fd) {
+	public String getDetail(Model model, BoardDto fd, @SessionAttribute("memberNo")int loginMemberNo) {
 		BoardDto detail = freeService.getDetail(fd, "detail");
 		
 		if (!Objects.isNull(detail)) {
@@ -78,6 +89,7 @@ public class FreeController {
 				detail.setUploadPath(path);
 			}
 			model.addAttribute("detail", detail);
+			model.addAttribute("loginMemberNo", loginMemberNo);
 			return "board/free/freeDetail";
 		}
 		return "common/error";
