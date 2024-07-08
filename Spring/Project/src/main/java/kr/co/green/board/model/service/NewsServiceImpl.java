@@ -1,5 +1,6 @@
 package kr.co.green.board.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,12 +9,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.green.board.model.dao.NewsDao;
 import kr.co.green.board.model.dto.BoardDto;
 import kr.co.green.board.model.dto.NewsDto;
 import kr.co.green.common.paging.PageInfo;
+import kr.co.green.common.transaction.TransactionHandler;
 import kr.co.green.common.upload.UploadFile;
 import kr.co.green.common.validation.DataValidation;
 
@@ -25,13 +29,15 @@ public class NewsServiceImpl implements BoardService {
 	private final NewsDao nDao;
 	private final UploadFile uf;
 	private final DataValidation dv;
+	private final TransactionHandler transactionHandler;
 	private BoardDto nDto; 
 	
 	@Autowired
-	public NewsServiceImpl(NewsDao nDao, UploadFile upload, DataValidation dv) {
+	public NewsServiceImpl(NewsDao nDao, UploadFile upload, DataValidation dv, TransactionHandler transactionHandler) {
 		this.nDao = nDao;
 		this.uf = upload;
 		this.dv = dv;
+		this.transactionHandler = transactionHandler;
 		this.nDto = new NewsDto();
 	}
 
@@ -51,6 +57,10 @@ public class NewsServiceImpl implements BoardService {
 	@Override
 	public BoardDto getDetail(BoardDto bDto, String type) {
 		
+//		HashMap<String, Object> getTransaction = transactionHandler.getStatus();
+//		TransactionStatus status = (TransactionStatus)getTransaction.get("status");
+//		PlatformTransactionManager transactionManager = (PlatformTransactionManager)getTransaction.get("transactionManager");
+		
 		logger.info("게시글 조회 요청: boardNo={}", bDto.getBoardNo());
 		
 		try {
@@ -61,10 +71,17 @@ public class NewsServiceImpl implements BoardService {
 			} else if (type.equals("edit")) {
 				result = 1;
 			}
-			// 게시글 조회
-			logger.info("게시글 상세 조회 성공: boardNo={}", bDto.getBoardNo());
-			nDto = nDao.getDetail(bDto);
-			return nDto;
+			
+			if (result == 1) {
+				// 게시글 조회
+				logger.info("게시글 상세 조회 성공: boardNo={}", bDto.getBoardNo());
+				nDto = nDao.getDetail(bDto);
+				transaction("commit");
+				return nDto;
+			} else {
+				transaction("rollback");
+				return null;
+			}
 		} catch(Exception e) {
 			logger.info("게시글 상세 조회 실패: 결과 없음, boardNo={}", bDto.getBoardNo());
 			logger.info("게시글 상세 조회 중 예외발생, Exception: ", e);
@@ -81,7 +98,6 @@ public class NewsServiceImpl implements BoardService {
 		if(dv.lengthCheck("boardContent", 300)) {
 			// 게시글 작성
 			int result = nDao.setEnroll(bDto);
-			System.out.println(upload);
 			logger.info("게시글 등록 및 파일 업로드 정보 저장 성공: boardNo={}", bDto.getBoardNo());
 			
 			if(result ==1 && !upload.isEmpty()) {
@@ -94,6 +110,7 @@ public class NewsServiceImpl implements BoardService {
 				return result;
 			}
 		logger.info("게시글 등록 실패: 제목길이 검증 실패");
+		
 		return 0;
 	}
 	
@@ -163,20 +180,37 @@ public class NewsServiceImpl implements BoardService {
 				
 				if(uf.deleteFile(getFileName) && bDto.getUploadName() != null) {
 					logger.info("기존 파일 삭제 성공: boardNo={}, boardUploadName={}", bDto.getBoardNo(), bDto.getUploadName());
+					transaction("commit");
 					return nDao.setNewsUploadUpdate(bDto) == 1 ? 1 : 0;
 				} else {
 					logger.info("기존 파일 삭제 실패: boardNo={}, boardUploadName={}", bDto.getBoardNo(), bDto.getUploadName());
+					transaction("rollback");
 				}
 			} else {
 				if(bDto.getUploadName() != null) {
 					logger.info("새로운 파일 업로드 실패: boardNo={}, boardUploadName={}", bDto.getBoardNo(), bDto.getUploadName());
+					transaction("rollback");
 				}
 			}
 		} else {
 			// 5. 파일 없을 때: 새 파일 업로드 or 아무것도 안함
 			logger.info("게시글 수정 실패: 제목 길이 검증 실패");
+			transaction("rollback");
 		}
 		return updateResult;
+	}
+	
+	// 트랜잭션 메소드
+	public void transaction(String type) {
+		HashMap<String, Object> getTransaction = transactionHandler.getStatus();
+		TransactionStatus status = (TransactionStatus)getTransaction.get("status");
+		PlatformTransactionManager transactionManager = (PlatformTransactionManager)getTransaction.get("transactionManager");
+		
+		if(type == "commit") {
+			transactionManager.commit(status);
+		} else if (type == "rollback") {
+			transactionManager.rollback(status);
+		}
 	}
 }
 
