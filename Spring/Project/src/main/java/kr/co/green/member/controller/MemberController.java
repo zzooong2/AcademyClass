@@ -5,23 +5,28 @@ import java.util.Objects;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.green.member.model.dto.MemberDto;
 import kr.co.green.member.model.service.MemberServiceImpl;
 
-@Controller
+@RestController
 @RequestMapping("/member")
 public class MemberController {
 	
 	// 서비스 객체 생성
 	private final MemberServiceImpl memberService;
+	private static final Logger logger = LogManager.getLogger(MemberController.class);
 	
 	@Autowired
 	public MemberController(MemberServiceImpl memberService) {
@@ -51,18 +56,18 @@ public class MemberController {
 		return "redirect:/member/loginForm.do";
 	}
 	
-	// 이메일 중복 검사
-	@PostMapping("/checkId.do")
-	@ResponseBody
-	public String checkId(MemberDto md) {
-		int result = memberService.checkId(md);
-		
-		if(result == 1) {
-			return "false"; 
-		} else {
-			return "true";
-		}
-	}
+//	// 이메일 중복 검사
+//	@PostMapping("/checkId.do")
+//	@ResponseBody
+//	public String checkId(MemberDto md) {
+//		int result = memberService.checkId(md);
+//		
+//		if(result == 1) {
+//			return "false"; 
+//		} else {
+//			return "true";
+//		}
+//	}
 	
 	// 로그인 페이지 이동
 	@GetMapping("/loginForm.do")
@@ -124,5 +129,23 @@ public class MemberController {
 			return "redirect:/";
 		}
 		return null;
+	}
+	
+	// api 이용 - 회원조회 (54열 checkId 주석처리함) 
+	@GetMapping("/check-duplicate/{id}")
+	public ResponseEntity<?> getCheckId(@PathVariable("id")String id) {
+		logger.info("/member/check-duplicate" + id + " Service 요청받음");
+		
+		int result = memberService.checkId(id);
+		
+		MemberDto member = new MemberDto();
+		member.setMemberNo(result);
+		member.setMemberId(id);
+		
+		if(result == 1) {
+			return new ResponseEntity<>(member, HttpStatus.OK);
+		} else { 
+			return new ResponseEntity<>(member, HttpStatus.OK);
+		}
 	}
 }

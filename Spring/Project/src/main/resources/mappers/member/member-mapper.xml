@@ -17,15 +17,29 @@
 		SELECT count(*) FROM MEMBER WHERE m_id = #{memberId} 
 	</select>
 	
+	<select id="checkMemberId" resultType="_int">
+		SELECT count(*) FROM MEMBER WHERE m_id = #{memberId} 
+	</select>
+	
 	<insert id="setRegister">
 		INSERT INTO MEMBER
 		VALUES (member_seq.nextval, #{memberName}, #{memberId}, #{memberPassword}, default, default)
 	</insert>
-	
 	
 	<select id="getInfo" resultMap="memberResultSet">
 		SELECT m_no, m_name, m_id, m_pwd, m_indate, m_type 
 		 FROM MEMBER
 		 WHERE m_id = #{memberId}
 	</select>
+	
+	<select id="getMemberInfo" resultMap="memberResultSet">
+		SELECT m_no, m_name, m_id, m_pwd, m_indate, m_type 
+		 FROM MEMBER
+		 WHERE m_id = #{memberId}
+	</select>
+	
+	<delete id="deleteMember">
+		DELETE member
+		WHERE m_id = #{memberId}
+	</delete>
 </mapper>

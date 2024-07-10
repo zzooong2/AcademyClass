@@ -28,6 +28,12 @@ public class MemberServiceImpl implements MemberService {
 		return mDao.checkId(md);
 	}
 	
+	// 아이디 중복검사
+	@Override
+	public int checkId(String memberId) {
+		return mDao.checkId(memberId);
+	}
+	
 	// 회원가입
 	@Override
 	public int setRegister(MemberDto md) {
@@ -56,5 +62,29 @@ public class MemberServiceImpl implements MemberService {
 		} else {
 			return null;
 		}
+	}
+	
+	// 회원정보 찾기
+	@Override
+	public MemberDto getMemberInfo(String memberId) {
+		MemberDto result = mDao.getMemberInfo(memberId);
+		
+		if(result != null) {
+			return result;
+		} else {
+			return null;
+		}
+	}
+	
+	// 회원 삭제
+	@Override
+	public int deleteMember(String memberId) {
+		int result = mDao.deleteMember(memberId);
+		
+		 if(result == 1) {
+		 	 return result;
+		 } else {
+			 return 0;
+		 }
 	}
 }

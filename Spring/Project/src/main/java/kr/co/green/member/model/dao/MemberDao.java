@@ -21,6 +21,11 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.checkId", md);
 	}
 	
+	// 아이디 중복검사
+	public int checkId(String memberId) {
+		return sqlSession.selectOne("memberMapper.checkMemberId", memberId);
+	}
+	
 	// 회원가입
 	public int setRegister(MemberDto md) {
 		return sqlSession.insert("memberMapper.setRegister", md);
@@ -31,6 +36,14 @@ public class MemberDao {
 		return sqlSession.selectOne("memberMapper.getInfo", md);
 	}
 	
-	// 로그인
+	// 회원정보 가져오기
+	public MemberDto getMemberInfo(String memberId) {
+		return sqlSession.selectOne("memberMapper.getmemberInfo", memberId);
+	}
+	
+	// 회원 삭제
+	public int deleteMember(String memberId) {
+		return sqlSession.delete("memberMapper.deleteMember", memberId);
+	}
 
 }
