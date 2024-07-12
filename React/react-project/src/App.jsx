@@ -1,6 +1,9 @@
 // import PrintWorld from "./components/01_PrintWorld";
 import { Link } from "react-router-dom";
 
+// CSS
+import "./styles/App.css";
+
 function App() {
   return (
     // 태그는 무조건 하나만 사용가능 
@@ -8,18 +11,50 @@ function App() {
     <div>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className="erase-underline">Home</Link>
         </li>
         <li>
-          <Link to="/RouterPage">02_RouterPage</Link>
+          <Link to="/RouterPage" className="erase-underline">02_RouterPage</Link>
         </li>
         <li>
-          <Link to="/QueryString">03_QueryString</Link>
+          <Link to="/QueryString?name=김현중&age=19" className="erase-underline">03_QueryString</Link>
         </li>
         <li>
-          <Link to="/PathVariable">04_PathVariable</Link>
+          <Link to="/PathVariable/김현중" className="erase-underline">04_PathVariable</Link>
+        </li>
+        <li>
+          <Link to="/JSX" className="erase-underline">05_JSX</Link>
+        </li>
+        <li>
+          <Link to="/PropsPage" className="erase-underline">06_Props</Link>
         </li>
       </ul>
+
+      <hr />
+      <h1>Ex1 실습 문제 </h1>
+      <ul>
+        <li>
+          <Link to="/Training/AboutPage" className="erase-underline">Ex01_AboutPage</Link>
+        </li>
+        <li>
+          <Link to="/Training/AddrPage?addr=안양" className="erase-underline">Ex01_AddrPage</Link>
+        </li>
+        <li>
+          <Link to="/Training/NamePage/김현중" className="erase-underline">Ex01_NamePage</Link>
+        </li>
+      </ul>
+
+      <hr />
+      <h1>Ex2 실습 문제 </h1>
+      <ul>
+        <li>
+          <Link to="/InlinePage" className="erase-underline">Ex02_InlinePage</Link>
+        </li>
+        <li>
+          <Link to="/OutStyle" className="erase-underline">Ex02_OutStyleSheetPage</Link>
+        </li>
+      </ul>
+
     </div>
   );
 }
