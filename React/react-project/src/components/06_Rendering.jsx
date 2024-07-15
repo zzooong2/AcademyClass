@@ -19,7 +19,7 @@ export default function Rendering( {animals}) {
     const firstFilter = animals.filter((animal) => (animal.age % 2) !== 0);
     // 요소 꺼내기
     const result = firstFilter.map((show, index) => {
-        return(
+        return( 
             <>
                 <li key={index}>
                     <p>
