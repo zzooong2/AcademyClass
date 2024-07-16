@@ -16,6 +16,11 @@ import OutStyle from "../../pages/training/Ex2_OutStyleSheetPage.jsx";
 import PropsPage from "../../pages/06_PropsPage.jsx";
 import Rendering from "../../pages/06_RenderPage.jsx"
 import Event from "../../pages/07_EventPage.jsx"
+import State from "../../pages/08_StatePage.jsx"
+import BooleanState from "../../components/08_BooleanState.jsx";
+import StateQuizePage from "../../pages/training/Ex03_StateQuizPage.jsx";
+
+// 사용자 요청 > router > Pages > Components
 
 // 경로설정
 const router = createBrowserRouter([
@@ -78,6 +83,20 @@ const router = createBrowserRouter([
     {
       path: "/Event",
       element: <Event />,
+    },
+    {
+      path: "/State",
+      element: <State />,
+    },
+    {
+      path: "/BooleanState",
+      element: <BooleanState />,
+    },
+    
+    // Ex03 실습 문제
+    {
+      path: "/StateQuizPage",
+      element: <StateQuizePage />,
     },
     
   ]);

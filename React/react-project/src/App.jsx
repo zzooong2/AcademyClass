@@ -34,6 +34,12 @@ function App() {
         <li>
           <Link to="/Event" className="erase-underline">07_Event</Link>
         </li>
+        <li>
+          <Link to="/State" className="erase-underline">08_State</Link>
+        </li>
+        <li>
+          <Link to="/BooleanState" className="erase-underline">08_BooleanState</Link>
+        </li>
       </ul>
 
       <hr />
@@ -58,6 +64,14 @@ function App() {
         </li>
         <li>
           <Link to="/OutStyle" className="erase-underline">Ex02_OutStyleSheetPage</Link>
+        </li>
+      </ul>
+
+      <hr />
+      <h1>Ex2 실습 문제 </h1>
+      <ul>
+        <li>
+          <Link to="/StateQuizPage" className="erase-underline">Ex03_StateQuizPage</Link>
         </li>
       </ul>
 
