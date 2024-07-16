@@ -23,10 +23,16 @@ function App() {
           <Link to="/PathVariable/김현중" className="erase-underline">04_PathVariable</Link>
         </li>
         <li>
-          <Link to="/JSX" className="erase-u nderline">05_JSX</Link>
+          <Link to="/JSX" className="erase-underline">05_JSX</Link>
         </li>
         <li>
           <Link to="/PropsPage" className="erase-underline">06_Props</Link>
+        </li>
+        <li>
+          <Link to="/RenderPage" className="erase-underline">06_Rendering</Link>
+        </li>
+        <li>
+          <Link to="/Event" className="erase-underline">07_Event</Link>
         </li>
       </ul>
 

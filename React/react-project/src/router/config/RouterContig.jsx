@@ -14,6 +14,8 @@ import NamePage from "../../pages/training/Ex01_NamePage.jsx";
 import InlinePage from "../../pages/training/Ex2_InlinePage.jsx";
 import OutStyle from "../../pages/training/Ex2_OutStyleSheetPage.jsx";
 import PropsPage from "../../pages/06_PropsPage.jsx";
+import Rendering from "../../pages/06_RenderPage.jsx"
+import Event from "../../pages/07_EventPage.jsx"
 
 // 경로설정
 const router = createBrowserRouter([
@@ -69,9 +71,17 @@ const router = createBrowserRouter([
       path: "/PropsPage",
       element: <PropsPage />,
     },
+    {
+      path: "/RenderPage",
+      element: <Rendering />,
+    },
+    {
+      path: "/Event",
+      element: <Event />,
+    },
     
   ]);
 
 
-export default router; 
+export default router;
   
